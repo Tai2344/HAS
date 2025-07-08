@@ -10,7 +10,7 @@
         </goals>
         <properties>
             <run.jvmArguments>-noverify -XX:TieredStopAtLevel=1 </run.jvmArguments>
-            <run.mainClass>com.proyecto.proyecto.Proyecto</run.mainClass>
+            <run.mainClass>com.hogar.HogarApplication</run.mainClass>            
             <Env.SPRING_OUTPUT_ANSI_ENABLED>always</Env.SPRING_OUTPUT_ANSI_ENABLED>
         </properties>
     </action>

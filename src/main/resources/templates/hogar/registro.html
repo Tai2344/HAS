@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+    <head th:replace="layout/plantilla :: head"></head>
+    <body>
+        <!-- Header -->
+        <div th:replace="layout/plantilla :: header"></div>
+        <body>
+            <div>
+                <!-- HU 3 y 17 - Registro e inicio y Descargar folleto | Penpot: Registro | Yong-->
+
+                <!-- Ejemplo para poder llamar al pdf, es un pdf vació de momento, esta es la ruta: -->
+                <!-- <a th:href="@{/pdf/documento-informativo.pdf}" download> </a> -->
+                <section class="container py-5 text-center">
+                    <h2>Página en construcción</h2>
+                    <p>Pronto podrás registrarte o iniciar sesión aquí.</p>
+                </section>
+            </div>           
+            <div th:replace="layout/plantilla :: footer">
+            </div>
+        </body>
+</html>
