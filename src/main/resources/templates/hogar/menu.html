@@ -3,105 +3,115 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="layout/plantilla :: head"></head>
-        <div th:replace="layout/plantilla :: header"></div>
+    <div th:replace="layout/plantilla :: header"></div>
 
-        <!<!-- Servicios -->
-        <section class="container-fluid my-5">
-            <h1 class="text-center servicios-title">Nuestros Servicios</h1>
-            
-            <div class="servicios-menu">           
-               <!-- Ítem de Servicio, esto podría ser reutilizable en algún punto, supongo-->
-                <div class="servicio-item">
-                    <i class="fa-solid fa-suitcase-medical"></i> 
-                    <span>Atención médica</span>
-                </div>
-                <div class="servicio-item">
-                    <i class="fa-solid fa-bed"></i>
-                    <span>Alojamiento cómodo</span>
-                </div>
-                <div class="servicio-item">
-                    <i class="fa-solid fa-utensils"></i>
-                    <span>Alimentación</span>
-                </div>
-                <div class="servicio-item">
-                    <i class="fa-solid fa-pump-soap"></i>
-                    <span>Limpieza</span>
-                </div>
-                 <div class="servicio-item">
-                    <i class="fa-solid fa-brain"></i>
-                    <span>Estimulación cognitiva</span>
-                </div>
-                <div class="servicio-item">
-                    <i class="fa-solid fa-person-walking"></i>
-                    <span>Planes personalizados</span>
-                </div>
+    <!<!-- Servicios -->
+    <section class="container-fluid my-5" style="color: #5e7154;">
+        <h1 class="text-center servicios-title">Nuestros Servicios</h1>
+
+        <div class="servicios-menu">
+            <div class="servicio-item">
+                <i class="fa-brands fa-accessible-icon"></i>
+                <span>Accesibilidad</span>
             </div>
-        </section>
-            <!-- Testimonios  -->
-        <section class="container-fluid my-5">
-            <div class="row">
-                <div class="col-md-8 mb-3">
-                    <div class="card h-100">
-                        <!-- Titulo de la card, eran separadas pero creo que queda mejor de este modo -->
-                        <div class="card-header">Lo que dicen nuestras familias ~ Testimonios</div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6 testimonial-block">
-                                    <p class="testimonial-text">"Desde el primer día, el personal nos recibió con una calidez increíble. Siento una paz inmensa sabiendo que mi madre está en las mejores manos."</p>
-                                    <p class="testimonial-author">- Maria Gonzalez</p>
-                                </div>
-                                <div class="col-md-6 testimonial-block">
-                                    <p class="testimonial-text">"La tranquilidad que me da saber que mi padre recibe un cuidado tan profesional y humano no tiene precio. El equipo es de primera."</p>
-                                    <p class="testimonial-author">- Juan Pérez</p>
-                                </div>
-                                <div class="col-md-6 testimonial-block">
-                                    <p class="testimonial-text">"Lo que más nos impresionó fueron las instalaciones. Todo está impecablemente limpio, es seguro y está perfectamente adaptado para ellos."</p>
-                                    <p class="testimonial-author">- Carmen Ríos</p>
-                                </div>
-                                <div class="col-md-6 testimonial-block">
-                                    <p class="testimonial-text">"Mi mamá ha rejuvenecido con los talleres. Hay tanta variedad que siempre tiene algo nuevo que la emociona y la mantiene activa. ¡Le encantan!"</p>
-                                    <p class="testimonial-author">- Carlos Castro</p>
-                                </div>
-                                <div class="col-md-6 testimonial-block">
-                                    <p class="testimonial-text">"Nuestra experiencia aquí ha superado todas las expectativas. El nivel de dedicación y el cariño que le dan a mi padre es simplemente increíble."</p>
-                                    <p class="testimonial-author">- Jimena Mora</p>
-                                </div>
-                                <div class="col-md-6 testimonial-block">
-                                    <p class="testimonial-text">"Confianza es la palabra que define a este lugar. Son una extensión de nuestra familia. Absolutamente recomendables."</p>
-                                    <p class="testimonial-author">- Sonia Williams</p>
-                                </div>
-                                <div class="col-md-6 testimonial-block">
-                                    <p class="testimonial-text">"La atención personalizada es fantástica. Han diseñado un plan de cuidados para mi abuela que ha mejorado notablemente su calidad de vida."</p>
-                                    <p class="testimonial-author">- Familia Rojas</p>
-                                </div>
-                                <div class="col-md-6 testimonial-block">
-                                    <p class="testimonial-text">"Ver a mi tío sonreír y participar en las actividades diarias es la mayor recompensa. Encontró un segundo hogar y nuevos amigos. ¡Gracias!"</p>
-                                    <p class="testimonial-author">- Ana Fernández</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Visitenos -->
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <div class="card-header">Visítenos</div>
-                        <div class="card-body d-flex flex-column">
-                            <p>Nuestro horario: <br> Lunes a Domingo: 9:00am - 6:00pm</p>
-                            <p>Nuestra ubicación:<br> San Ramón, Alajuela, Costa Rica</p>
-                            <div class="map-responsive flex-grow-1">
-                                <iframe 
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d215476.78495415903!2d-84.17169655504857!3d9.961571554217324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3e409a4b65d%3A0xa2cf2259fe11fb0e!2sUniversidad%20Fid%C3%A9litas%20Entrada%20Norte!5e1!3m2!1ses!2scr!4v1748023290690!5m2!1ses!2scr"
-                                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
+            <div class="servicio-item">
+                <i class="fa-solid fa-person-walking"></i>
+                <span>Actividades recreativas</span>
+            </div>
+
+            <div class="servicio-item">
+                <i class="fa-solid fa-bed"></i>
+                <span>Alojamiento cómodo</span>
+            </div>
+
+            <div class="servicio-item">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Alimentación balanceada</span>
+            </div>
+
+            <div class="servicio-item">
+                <i class="fa-solid fa-suitcase-medical"></i>
+                <span>Atención médica</span>
+            </div>
+
+            <div class="servicio-item">
+                <i class="fa-solid fa-brain"></i>
+                <span>Estimulación cognitiva</span>
+            </div>
+
+            <div class="servicio-item">
+                <i class="fa-solid fa-pump-soap"></i>
+                <span>Limpieza</span>
+            </div>
+        </div>
+
+    </section>
+    <!-- Testimonios  -->
+    <section class="container-fluid my-5">
+        <div class="row">
+            <div class="col-md-8 mb-3">
+                <div class="card h-100">
+                    <!-- Titulo de la card, eran separadas pero creo que queda mejor de este modo -->
+                    <div class="card-header">Lo que dicen nuestras familias ~ Testimonios</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 testimonial-block">
+                                <p class="testimonial-text">"Desde el primer día, el personal nos recibió con una calidez increíble. Siento una paz inmensa sabiendo que mi madre está en las mejores manos."</p>
+                                <p class="testimonial-author">- Maria Gonzalez</p>
+                            </div>
+                            <div class="col-md-6 testimonial-block">
+                                <p class="testimonial-text">"La tranquilidad que me da saber que mi padre recibe un cuidado tan profesional y humano no tiene precio. El equipo es de primera."</p>
+                                <p class="testimonial-author">- Juan Pérez</p>
+                            </div>
+                            <div class="col-md-6 testimonial-block">
+                                <p class="testimonial-text">"Lo que más nos impresionó fueron las instalaciones. Todo está impecablemente limpio, es seguro y está perfectamente adaptado para ellos."</p>
+                                <p class="testimonial-author">- Carmen Ríos</p>
+                            </div>
+                            <div class="col-md-6 testimonial-block">
+                                <p class="testimonial-text">"Mi mamá ha rejuvenecido con los talleres. Hay tanta variedad que siempre tiene algo nuevo que la emociona y la mantiene activa. ¡Le encantan!"</p>
+                                <p class="testimonial-author">- Carlos Castro</p>
+                            </div>
+                            <div class="col-md-6 testimonial-block">
+                                <p class="testimonial-text">"Nuestra experiencia aquí ha superado todas las expectativas. El nivel de dedicación y el cariño que le dan a mi padre es simplemente increíble."</p>
+                                <p class="testimonial-author">- Jimena Mora</p>
+                            </div>
+                            <div class="col-md-6 testimonial-block">
+                                <p class="testimonial-text">"Confianza es la palabra que define a este lugar. Son una extensión de nuestra familia. Absolutamente recomendables."</p>
+                                <p class="testimonial-author">- Sonia Williams</p>
+                            </div>
+                            <div class="col-md-6 testimonial-block">
+                                <p class="testimonial-text">"La atención personalizada es fantástica. Han diseñado un plan de cuidados para mi abuela que ha mejorado notablemente su calidad de vida."</p>
+                                <p class="testimonial-author">- Familia Rojas</p>
+                            </div>
+                            <div class="col-md-6 testimonial-block">
+                                <p class="testimonial-text">"Ver a mi tío sonreír y participar en las actividades diarias es la mayor recompensa. Encontró un segundo hogar y nuevos amigos. ¡Gracias!"</p>
+                                <p class="testimonial-author">- Ana Fernández</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <div th:replace="layout/plantilla :: footer"></div>
-    </body>
+
+            <!-- Visitenos -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-header">Visítenos</div>
+                    <div class="card-body d-flex flex-column">
+                        <p>Nuestro horario: <br> Lunes a Domingo: 9:00am - 6:00pm</p>
+                        <p>Nuestra ubicación:<br> San Ramón, Alajuela, Costa Rica</p>
+                        <div class="map-responsive flex-grow-1">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.1460082480553!2d-84.474424!3d10.087120299999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0457dd1e9debf%3A0xa878ae9cfd3f6098!2sHogar%20Arbol%20de%20Sabiduria!5e0!3m2!1ses!2scr!4v1752209199573!5m2!1ses!2scr"
+                                width="100%"height="100%" 
+                                style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+    <div th:replace="layout/plantilla :: footer"></div>
+</body>
 </html>

@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    
+
     <!--Head-->
     <head th:fragment="head">
         <meta charset="UTF-8"/>
         <title>Hogar Árbol de Sabiduría</title>
-        
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/Icon.png"/>
+
         <!-- Las hojas de Estilo -->
         <link rel="stylesheet" th:href="@{/css/estilos.css}" /> 
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" /> 
@@ -23,8 +24,8 @@
             <div class="header-content">
                 <!-- 1. Logo y Título a la izquierda -->
                 <div class="logo-title">
-                    <i class="fa-solid fa-tree"></i>
-                    <span>Hogar Árbol de Sabiduría</span>
+                    <img src="/img/Icon.png" alt="Ícono del árbol" width="50" height="50">
+                        <span>Hogar Árbol de Sabiduría</span>
                 </div>
                 <div class="nav-center">
                     <div class="nav-links">
@@ -61,7 +62,6 @@
                 </div>
             </div>
         </header>
-
         <!-- Footer -->
         <footer th:fragment="footer">
             <div class="footer-content">
@@ -69,6 +69,7 @@
                     <!-- El target="_blank" lo que hace es descargar el pdf -->
                     <a th:href="@{/pdf/documento-informativo.pdf}" target="_blank">Términos y condiciones de uso</a> |
                     <a href="#">Preguntas Frecuentes</a> |
+                    <a th:href="@{/Preguntas}">Preguntas Frecuentes</a>
                 </span>
                 <span>&copy; 2025 | Hogar Árbol de Sabiduría</span>
             </div>

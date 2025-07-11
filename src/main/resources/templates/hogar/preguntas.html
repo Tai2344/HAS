@@ -2,17 +2,58 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-
     <head th:replace="layout/plantilla :: head"></head>
-    <body>
-        <!-- Header -->
+    <body style="background-color: #f9f7f4; margin: 0;">
         <div th:replace="layout/plantilla :: header"></div>
-        <body>
-            <div>
-                <!-- HU5 - Historia, misión y valores | Penpot: Preguntas Frecuentes | Jefferson -->
+
+        <section class="container-fluid my-5" style="color: #5e7154;">
+            <h1 class="text-center servicios-title">¿En qué podemos ayudarte?</h1>
+            <p class="text-center fw-bold fs-5 mx-5">Consulta las dudas más frecuentes y conoce nuestra misión y valores.</p>
+
+            <div class="row mt-4">
+
+                <!-- Preguntas frecuentes -->
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
+                        <div class="card-header text-center">Preguntas frecuentes</div>
+                        <div class="card-body">
+                            <p>¿Qué se necesita para ingresar? Se requiere ser mayor de 60 años, exámenes médicos recientes y evaluación previa.</p>
+                            <p>¿Cuál es el costo y qué incluye? Incluye alojamiento, alimentación, cuidados y actividades diarias. Hay pago inicial y mensualidad.</p>
+                            <p>¿Qué tipo de talleres se ofrecen? Cognitivos, arte, música y actividad física. Algunos requieren matrícula adicional.</p>
+                            <p>¿Hay atención médica permanente? Sí, disponible 24/7 con personal médico calificado.</p>
+                            <p>¿Se permiten visitas familiares? Sí, en horarios definidos y bajo protocolo de salud.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Historia, misión y valores -->
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
+                        <div class="card-header text-center">Historia, Misión y Valores</div>
+                        <div class="card-body">
+                            <p><span style="font-weight: 500;">Historia:</span> Nacimos con el deseo de crear un hogar lleno de respeto y calidez para personas mayores.</p>
+                            <p><span style="font-weight: 500;">Misión:</span> Brindar un entorno seguro, humano y estimulante que promueva el bienestar integral.</p>
+                            <p><span style="font-weight: 500;">Valores:</span> Respeto, Calidez, Compromiso, Alegría de vivir, Cuidado integral.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contacto -->
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
+                        <div class="card-header text-center">Contáctenos</div>
+                        <div class="card-body">
+                            <p><i class="fa-brands fa-whatsapp"></i> 8488-4329</p>
+                            <p><i class="fa-brands fa-facebook"></i> Hogar Árbol de Sabiduría</p>
+                            <p><i class="fa-brands fa-x-twitter"></i> @HogarArboldeSabiduria</p>
+                            <p><i class="fa-brands fa-instagram"></i> Hogar Árbol de Sabiduría</p>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-            <div th:replace="layout/plantilla :: footer"></div>
+        </section>
 
-        </body>
+        <div th:replace="layout/plantilla :: footer"></div>
+    </body>
 </html>

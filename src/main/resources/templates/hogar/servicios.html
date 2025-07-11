@@ -2,16 +2,65 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-
     <head th:replace="layout/plantilla :: head"></head>
-    <body>
-        <!-- Header -->
+    <body style="background-color: #f9f7f4; margin: 0;">
         <div th:replace="layout/plantilla :: header"></div>
-        <body>
-            <div><!-- HU1 - Servicios del hogar | Penpot: Servicios | Jefferson -->
+
+        <section class="container-fluid my-5" style="color: #5e7154;">
+            <h1 class="text-center servicios-title">Servicios</h1>
+            <p class="text-center fw-bold fs-5 mx-5">Explora nuestros servicios principales, diseñados para garantizar el bienestar integral de nuestros residentes en cada etapa de su vida.</p>
+
+            <div class="row mt-4">
+
+                <!-- Atención personalizada -->
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
+                        <div class="card-header text-center">Atención personalizada</div>
+                        <div class="card-body">
+                            <p>Apoyo con actividades diarias, higiene, alimentación y movilidad.</p>
+                            <p>Fisioterapia y rehabilitación con medios físicos, eléctricos e hídricos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estancia temporal o permanente -->
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
+                        <div class="card-header text-center">Estancia temporal o permanente</div>
+                        <div class="card-body">
+                            <p>Contamos con distintas modalidades de atención adaptadas a tus necesidades.</p>
+                            <p>Incluye acompañamiento psicológico y contención afectiva según cada caso.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estimulación cognitiva -->
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
+                        <div class="card-header text-center">Estimulación cognitiva</div>
+                        <div class="card-body">
+                            <p>Evaluación profesional y talleres para mantener activa la mente.</p>
+                            <p>Grupos diseñados para promover el pensamiento crítico y la interacción social.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cuidado médico integral -->
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
+                        <div class="card-header text-center">Cuidado médico integral</div>
+                        <div class="card-body">
+                            <p>Servicios médicos disponibles en el hogar.</p>
+                            <p>Coordinación con especialistas, medicamentos y tratamientos según cada necesidad.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <div th:replace="layout/plantilla :: footer">
-            </div>
-        </body>
+            <p class="text-center fw-bold mt-4">Puedes encontrar más información en el documento PDF.</p>
+        </section>
+
+        <div th:replace="layout/plantilla :: footer"></div>
+    </body>
 </html>

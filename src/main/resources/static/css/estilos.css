@@ -64,7 +64,6 @@ header {
   white-space: nowrap; /* Evita que el texto del botón se rompa */
 }
 
-
 /* Barra de navegación */
 .nav-links {
   display: flex;
@@ -104,7 +103,33 @@ header {
 }
 
 
-/*Menú principal (sí es probable que cada parte tenga que llevar CSS por el diseño*/
+/* Footer */
+
+footer {
+  background-color: #c2a98e; 
+  color: white;
+  padding: 15px 0; 
+  text-align: center;
+  font-size: 1rem;
+  margin-top: auto; /*Como decia antes, con esto se fija el footer, se convierte en un sticky footer,
+                    da igual si la pagina está vacía siempre va a estar el footer en la parte inferior*/ 
+}
+
+footer a {
+  color: white;
+  text-decoration: underline; /* Para los enlaces de Preguntas Frecuentes y Terminos */
+}
+
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+/*Menú principal*/
 
 .servicios-title {
     margin-bottom: 3rem; 
@@ -177,30 +202,25 @@ header {
     height: 100%; 
     width: 100%;
 }
-
-/* Footer */
-
-footer {
-  background-color: #c2a98e; 
-  color: white;
-  padding: 15px 0; 
-  text-align: center;
-  font-size: 1rem;
-  margin-top: auto; /*Como decia antes, con esto se fija el footer, se convierte en un sticky footer,
-                    da igual si la pagina está vacía siempre va a estar el footer en la parte inferior*/ 
+.registro-inicio {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
 }
-
-footer a {
-  color: white;
-  text-decoration: underline; /* Para los enlaces de Preguntas Frecuentes y Terminos */
+.registro, .inicio {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 40%;
+    background-color: #fdfdfd;
 }
-
-
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  align-items: center;
+form input, form textarea, form button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
 }
-
+button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px;
+}
