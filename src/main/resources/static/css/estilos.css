@@ -204,3 +204,25 @@ footer a {
   align-items: center;
 }
 
+.registro-inicio {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+}
+.registro, .inicio {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 40%;
+    background-color: #fdfdfd;
+}
+form input, form textarea, form button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+}
+button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px;
+}

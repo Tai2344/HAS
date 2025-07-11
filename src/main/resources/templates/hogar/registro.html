@@ -3,22 +3,48 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
-    <head th:replace="layout/plantilla :: head"></head>
+    <head>
+        <title>Registro / Inicio</title>
+        <link rel="stylesheet" th:href="@{/css/estilos.css}">
+    </head>
     <body>
-        <!-- Header -->
+        <head th:replace="layout/plantilla :: head"></head>
         <div th:replace="layout/plantilla :: header"></div>
-        <body>
-            <div>
-                <!-- HU 3 y 17 - Registro e inicio y Descargar folleto | Penpot: Registro | Yong-->
 
-                <!-- Ejemplo para poder llamar al pdf, es un pdf vació de momento, esta es la ruta: -->
-                <!-- <a th:href="@{/pdf/documento-informativo.pdf}" download> </a> -->
-                <section class="container py-5 text-center">
-                    <h2>Página en construcción</h2>
-                    <p>Pronto podrás registrarte o iniciar sesión aquí.</p>
-                </section>
-            </div>           
-            <div th:replace="layout/plantilla :: footer">
+        <div class="container">
+            <div class="registro-inicio">
+                <!-- Formulario de Registro -->
+                <div class="registro">
+                    <h3>Registrar residente</h3>
+                    <form th:action="@{/registro}" method="post">
+                        <input type="text" name="nombre" placeholder="Nombre y apellidos" required />
+                        <input type="text" name="cedula" placeholder="Número de Cédula" required />
+                        <input type="text" name="telefono" placeholder="Teléfono" required />
+                        <input type="password" name="password" placeholder="Contraseña" required />
+                        <textarea name="padecimientos" placeholder="Padecimientos (opcional)"></textarea>
+                        <button type="submit">REGISTRARSE</button>
+                    </form>
+                </div>
+
+                <!-- Formulario de Inicio de Sesión -->
+                <div class="inicio">
+                    <h3>Inicio</h3>
+                    <form th:action="@{/login}" method="post">
+                        <input type="text" name="cedula" placeholder="Número de Cédula / Código" required />
+                        <input type="password" name="password" placeholder="Contraseña" required />
+                        <button type="submit">INICIAR SESIÓN</button>
+                    </form>
+                    <a href="#" th:href="@{/olvide-contrasena}" style="display: block; width: max-content; margin: 0 auto;">Olvidé mi contraseña</a><br>
+                        <a href="#" 
+                           th:href="@{/pdf/documento-informativo.pdf}" 
+                           download 
+                           style="display: block; width: max-content; margin: 1rem auto; color: #fff; background-color: #800000; padding: 8px 12px; border-radius: 5px; text-align: center; text-decoration: none;">
+                            📄 Descargar PDF Informativo
+                        </a>
+                </div>
             </div>
-        </body>
+        </div>
+
+        <footer th:replace="layout/plantilla :: footer"></footer>
+    </body>
 </html>

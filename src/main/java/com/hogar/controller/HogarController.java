@@ -12,4 +12,9 @@ public String mostrarMenu(Model model) {
     model.addAttribute("activePage", "menu");
     return "hogar/menu";
 }
+
+@GetMapping("/registro-inicio")
+public String mostrarRegistroInicio() {
+    return "registro-inicio";
+}
 }
