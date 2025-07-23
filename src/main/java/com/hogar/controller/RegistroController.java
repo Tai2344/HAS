@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 public class RegistroController {
-    @PostMapping("/registro")
+    @PostMapping("/Registro")
     public String registrarResidente(
             @RequestParam String nombre,
             @RequestParam String cedula,
@@ -14,11 +14,11 @@ public class RegistroController {
     ) {
         
         System.out.println("Registrado: " + nombre + ", " + cedula + ", " + telefono + ", " + padecimientos);
-        return "redirect:/registro?success";
+        return "redirect:/Registro?success";
     }
 
-    @GetMapping("/registro")
+    @GetMapping("/Registro")
     public String mostrarFormularioRegistro() {
-        return "hogar/registro"; // Carga el archivo templates/hogar/registro.html
+        return "hogar/Registro"; 
     }
 }

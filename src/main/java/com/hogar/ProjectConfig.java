@@ -14,14 +14,22 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
 public class ProjectConfig implements WebMvcConfigurer {
+
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("hogar/registro"); // home
-        registry.addViewController("/registro").setViewName("hogar/registro");
-        registry.addViewController("/Menu").setViewName("hogar/menu");
-        registry.addViewController("/Servicio").setViewName("hogar/servicio");
-        registry.addViewController("/Asistencia").setViewName("hogar/asistencia");
+        registry.addViewController("/").setViewName("hogar/Registro"); // home
+        registry.addViewController("/registro").setViewName("hogar/Registro");
+        registry.addViewController("/Menu").setViewName("hogar/Menu");
+        registry.addViewController("/Servicios").setViewName("hogar/Servicios");
+        registry.addViewController("/Asistencia").setViewName("hogar/Asistencia");
+        registry.addViewController("/Talleres").setViewName("hogar/Talleres");
+        registry.addViewController("/Galeria").setViewName("hogar/Galeria");
+        registry.addViewController("/ZonaPago").setViewName("hogar/ZonaPago");
+        registry.addViewController("/Administracion").setViewName("hogar/Administracion");
+        registry.addViewController("/Preguntas").setViewName("hogar/Preguntas");
+
     }
+
     @Bean
     public SpringResourceTemplateResolver templateResolver_0() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
@@ -32,6 +40,7 @@ public class ProjectConfig implements WebMvcConfigurer {
         resolver.setCheckExistence(true);
         return resolver;
     }
+
     @Bean
     public LocaleResolver localeResolver() {
         var slr = new SessionLocaleResolver();
@@ -40,6 +49,7 @@ public class ProjectConfig implements WebMvcConfigurer {
         slr.setTimeZoneAttributeName("session.current.timezone");
         return slr;
     }
+
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
         var lci = new LocaleChangeInterceptor();
