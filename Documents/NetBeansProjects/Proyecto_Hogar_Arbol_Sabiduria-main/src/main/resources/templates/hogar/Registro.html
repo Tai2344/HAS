@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+    <head>
+        <title>Registro / Inicio</title>
+        <link rel="stylesheet" th:href="@{/css/estilos.css}">
+    </head>
+    <body>
+        <head th:replace="layout/plantilla :: head"></head>
+        <div th:replace="layout/plantilla :: header"></div>
+
+        <div class="container">
+            <div class="registro-inicio">
+                <!-- Formulario de Registro -->
+                <div class="registro">
+                    <h3>Registrar residente</h3>
+                    <form th:action="@{/registro}" method="post">
+                        <input type="text" name="nombre" placeholder="Nombre y apellidos" required />
+                        <input type="text" name="cedula" placeholder="Número de Cédula" required />
+                        <input type="text" name="telefono" placeholder="Teléfono" required />
+                        <input type="password" name="password" placeholder="Contraseña" required />
+                        <textarea name="padecimientos" placeholder="Padecimientos (opcional)"></textarea>
+                        <button type="submit">REGISTRARSE</button>
+                    </form>
+                </div>
+
+                <!-- Formulario de Inicio de Sesión -->
+                <div class="inicio">
+                    <h3>Inicio</h3>
+                    <form th:action="@{/login}" method="post">
+                        <input type="text" name="cedula" placeholder="Número de Cédula / Código" required />
+                        <input type="password" name="password" placeholder="Contraseña" required />
+                        <button type="submit">INICIAR SESIÓN</button>
+                    </form>
+                    <a href="#" th:href="@{/olvide-contrasena}" style="display: block; width: max-content; margin: 0 auto;">Olvidé mi contraseña</a><br>
+                        <a href="#" 
+                           th:href="@{/pdf/documento-informativo.pdf}" 
+                           download 
+                           style="display: block; width: max-content; margin: 1rem auto; color: #fff; background-color: #800000; padding: 8px 12px; border-radius: 5px; text-align: center; text-decoration: none;">
+                            📄 Descargar PDF Informativo
+                        </a>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="layout/plantilla :: footer"></footer>
+    </body>
+</html>
