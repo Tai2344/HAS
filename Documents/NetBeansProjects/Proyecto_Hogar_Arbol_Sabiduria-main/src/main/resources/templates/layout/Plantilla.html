@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+    <!--Head-->
+    <head th:fragment="head">
+        <meta charset="UTF-8"/>
+        <title>Hogar Árbol de Sabiduría</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/Icon.png"/>
+
+        <!-- Las hojas de Estilo -->
+        <link rel="stylesheet" th:href="@{/css/estilos.css}" /> 
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" /> 
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.min.css}" /> 
+        <!-- Scripts de JavaScript -->
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script> 
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script> 
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script> 
+    </head>
+    <body>
+        <!-- Header -->
+        <header th:fragment="header">
+            <div class="header-content">
+                <!-- 1. Logo y Título a la izquierda -->
+                <div class="logo-title">
+                    <img src="/img/Icon.png" alt="Ícono del árbol" width="50" height="50">
+                        <span>Hogar Árbol de Sabiduría</span>
+                </div>
+                <div class="nav-center">
+                    <div class="nav-links">
+                        <a th:href="@{/Menu}">Menú</a>
+                        <a th:href="@{/Talleres}">Talleres</a>
+                        <a th:href="@{/Servicios}">Servicios</a>
+                        <a th:href="@{/Galeria}">Galería</a>
+                        <a th:href="@{/Asistencia}">Asistencia</a>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="search-container">
+                        <form role="search" class="d-flex">
+                            <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar"/>
+                            <button type="submit" class="btn btn-outline-success">
+                                <i class="fa-solid fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!-- Botón para iniciar sesión, el resto está en CSS -->
+                    <a th:href="@{/registro}" class="login-button">
+                        Iniciar sesión
+                    </a>
+                    <!-- Menú desplegable para cambiar de idioma -->
+                    <div class="dropdown language-dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="idiomaDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-globe"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="idiomaDropdown">
+                            <li><a class="dropdown-item" href="#">Español</a></li>
+                            <li><a class="dropdown-item" href="#">English</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Footer -->
+        <footer th:fragment="footer">
+            <div class="footer-content">
+                <span>
+                    <!-- El target="_blank" lo que hace es descargar el pdf -->
+                    <a th:href="@{/pdf/Terminos y Condiciones.pdf}" target="_blank">Términos y condiciones de uso</a> |
+                    <a th:href="@{/Preguntas}">Preguntas Frecuentes</a>
+                </span>
+                <span>&copy; 2025 | Hogar Árbol de Sabiduría</span>
+            </div>
+        </footer>
+
+    </body>
+</html>
