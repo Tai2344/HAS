@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
     <!--Head-->
     <head th:fragment="head">
@@ -34,6 +34,7 @@
                         <a th:href="@{/Servicios}">Servicios</a>
                         <a th:href="@{/Galeria}">Galería</a>
                         <a th:href="@{/Asistencia}">Asistencia</a>
+                         <a th:href="@{/Administracion}" sec:authorize="hasRole('ADMIN')">Administración</a>
                     </div>
                 </div>
                 <div class="header-right">
@@ -45,10 +46,9 @@
                             </button>
                         </form>
                     </div>
-                    <!-- Botón para iniciar sesión, el resto está en CSS -->
-                    <a th:href="@{/registro}" class="login-button">
-                        Iniciar sesión
-                    </a>
+                    
+                    
+                    
                     <!-- Menú desplegable para cambiar de idioma -->
                     <div class="dropdown language-dropdown">
                         <button class="btn dropdown-toggle" type="button" id="idiomaDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,21 +58,56 @@
                             <li><a class="dropdown-item" href="#">Español</a></li>
                             <li><a class="dropdown-item" href="#">English</a></li>
                         </ul>
+                        <div id="resultBlock">
+                            <!-- Si NO está autenticado: mostrar botón de login -->
+                            <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                                <li class='nav-item'>
+                                    <a th:href="@{/login}" class="btn btn-outline-primary">
+                                        Iniciar sesión <i class="fas fa-right-to-bracket"></i>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- Si está autenticado: mostrar perfil y botón de logout -->
+                            <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                                <li class="nav-item my-auto">
+                                    <img th:src="@{${session.imagenUsuario}}" 
+                                         height="40" 
+                                         class="rounded-circle"
+                                         alt=""/>
+                                    <span sec:authentication="name">Usuario</span>
+                                </li>
+                                <li class="nav-item my-auto">
+                                    <form method="post" th:action="@{/logout}">
+                                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                        <button class="btn btn-light" title="Cerrar sesión">
+                                            <i class="fas fa-right-from-bracket"></i>
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
         <!-- Footer -->
         <footer th:fragment="footer">
-            <div class="footer-content">
+            <div class="footer-content text-center">
                 <span>
-                    <!-- El target="_blank" lo que hace es descargar el pdf -->
                     <a th:href="@{/pdf/Terminos y Condiciones.pdf}" target="_blank">Términos y condiciones de uso</a> |
                     <a th:href="@{/Preguntas}">Preguntas Frecuentes</a>
                 </span>
-                <span>&copy; 2025 | Hogar Árbol de Sabiduría</span>
+                <br>
+                    <span>&copy; 2025 | Hogar Árbol de Sabiduría</span>
             </div>
         </footer>
+        <script th:inline="javascript">
+            var csrfParameter = /*[[${_csrf.parameterName}]]*/ 'none';
+            var csrfToken = /*[[${_csrf.token}]]*/ 'none';
+            console.log("CSRF Parameter: " + csrfParameter);
+            console.log("CSRF Token: " + csrfToken);
+        </script>
 
     </body>
 </html>

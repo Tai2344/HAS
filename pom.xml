@@ -16,8 +16,8 @@
     <name>Proyecto</name>
     <description>Proyecto_Hogar_Arbol_Sabiduría </description>
     <properties>
-        <java.version>24</java.version>
-        <maven.compiler.release>24</maven.compiler.release>
+        <java.version>23</java.version>
+        <maven.compiler.release>23</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
@@ -83,6 +83,14 @@
             <groupId>org.webjars</groupId>
             <artifactId>webjars-locator</artifactId>
             <version>0.52</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity6</artifactId>
         </dependency>
     </dependencies>
     <build>
