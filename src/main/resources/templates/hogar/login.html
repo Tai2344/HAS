@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+    <head th:fragment="head">
+        <meta charset="UTF-8"/>
+        <title>Hogar Árbol de Sabiduría</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/Icon.png"/>
+
+        <!-- Las hojas de Estilo -->
+        <link rel="stylesheet" th:href="@{/css/estilos.css}" />
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" /> 
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.min.css}" /> 
+        <!-- Scripts de JavaScript -->
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script> 
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script> 
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script> 
+
+        <style>
+            .padecimientos-textarea {
+                height: 50px;
+                max-height: 150px;
+                resize: vertical;
+                overflow-y: auto;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Formulario de Registro -->
+
+        <div class="container registro-inicio">
+            <!-- Registro a la izquierda -->
+            <div class="registro card">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">Registrar residente</h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/registro}" method="post">
+                        <div class="form-group">
+                            <label for="nombre"><i class="fas fa-user"></i> Nombre:</label>
+                            <input type="text" class="form-control" name="nombre" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="cedula"><i class="fas fa-id-card"></i> Cédula:</label>
+                            <input type="text" class="form-control" name="cedula" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono"><i class="fas fa-phone"></i> Teléfono:</label>
+                            <input type="text" class="form-control" name="telefono" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><i class="fas fa-lock"></i> Contraseña:</label>
+                            <input type="password" class="form-control" name="password" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="padecimientos"><i class="fas fa-notes-medical"></i> Padecimientos:</label>
+                            <textarea name="padecimientos" class="form-control padecimientos-textarea"></textarea>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-user-plus"></i> REGISTRARSE
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Login a la derecha -->
+            <div class="inicio card">
+                <div class="card-header bg-success text-white">
+                    <h3>Inicio de sesión</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST" th:action="@{/login}">
+                        <div class="form-group">
+                            <label for="username"><i class="fas fa-user-lock"></i> Usuario:</label>
+                            <input class="form-control" type="text" name="username" id="username" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><i class="fas fa-key"></i> Contraseña:</label>
+                            <input class="form-control" type="password" name="password" id="password" />
+                        </div>
+                        <div class="card-footer text-center">
+                            <button class="btn btn-success" type="submit">
+                                <i class="fas fa-sign-in-alt"></i> INGRESAR
+                            </button>
+                        </div>
+                    </form>
+                    <a th:href="@{/pdf/documento-informativo.pdf}" download
+                       style="display: block; width: max-content; margin: 1rem auto; color: #fff; background-color: #800000; padding: 8px 12px; border-radius: 5px; text-align: center; text-decoration: none;">
+                        📄 Descargar PDF Informativo
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="layout/plantilla :: footer"></div>
+    </body>
+</html>

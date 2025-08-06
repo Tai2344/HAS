@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="layout/plantilla :: head"></head>
+<body style="background-color: #f9f7f4; margin: 0;">
+    <div th:replace="layout/plantilla :: header"></div>
+
+    <section class="container-fluid my-5" style="color: #5e7154;">
+         <h1 class="text-center servicios-title">Galería</h1>
+        <p class="text-center fw-bold fs-5 mx-5">
+            Nuestras instalaciones están diseñadas para brindar comodidad, cariño y seguridad. 
+            Aquí compartimos algunos espacios que hacen de este lugar un verdadero hogar
+        </p>
+
+        <div class="row justify-content-center mt-5">
+
+            <!-- Habitación -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm">
+                    <img src="/img/habitacion.png" class="card-img-top" alt="Habitación">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Habitaciones</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nuestro Personal -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm">
+                    <img src="/img/personal.png" class="card-img-top" alt="Nuestro Personal">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Nuestro Personal</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Espacios Comunes 1 -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm">
+                    <img src="/img/espacios1.png" class="card-img-top" alt="Espacios Comunes">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Espacios Comunes</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Espacios Comunes 2 -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm">
+                    <img src="/img/espacios2.png" class="card-img-top" alt="Espacios Comunes">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Espacios Comunes</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agendar cita -->
+            <div class="col-md-5 mt-5">
+                <div class="card shadow" style="background-color: #fff3ee;">
+                    <img src="/img/visita.png" class="card-img-top" alt="Visita">
+                    <div class="card-body text-center">
+                        <p class="card-text fw-bold">
+                            ¿Querés conocernos en persona? Te invitamos a agendar una visita y descubrir lo que nos hace especiales
+                        </p>
+                        <button class="btn btn-warning text-white">Agendar cita</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div th:replace="layout/plantilla :: footer"></div>
+</body>
+</html>

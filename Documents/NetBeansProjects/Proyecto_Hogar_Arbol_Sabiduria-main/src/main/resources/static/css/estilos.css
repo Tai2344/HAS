@@ -1,3 +1,4 @@
+
 /* Estilos generales*/
 body {
     background-color: #f5f1ea;
@@ -110,31 +111,22 @@ footer {
     padding: 15px 0;
     text-align: center;
     font-size: 1rem;
+    margin-top: auto; /*Como decia antes, con esto se fija el footer, se convierte en un sticky footer,
+                      da igual si la pagina está vacía siempre va a estar el footer en la parte inferior*/
 }
 
-/* Estilo para los enlaces dentro del footer */
-footer {
-    background-color: #c2a98e;
-    color: white;
-    padding: 15px 0;
-    text-align: center;
-    font-size: 1rem;
-}
-
-/* Estilo para los enlaces dentro del footer */
 footer a {
     color: white;
-    text-decoration: underline;
+    text-decoration: underline; /* Para los enlaces de Preguntas Frecuentes y Terminos */
 }
 
-/* Estilo del contenido dentro del footer */
+
 .footer-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     align-items: center;
-    text-align: center;
 }
 
 /*Menú principal, Login, Registro y Asistencia*/
@@ -211,25 +203,16 @@ footer a {
     width: 100%;
 }
 .registro-inicio {
-  display: flex;
-  justify-content: space-between; 
-  padding: 40px 0;
-  width: 100%; 
-  box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
 }
-
 .registro, .inicio {
-  width: 45%; 
-  min-width: 300px;
-  box-sizing: border-box;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 40%;
+    background-color: #fdfdfd;
 }
-
-.padecimientos-textarea {
-  height: 120px;       /* altura fija */
-  resize: none;        /* desactiva el redimensionado */
-  overflow-y: auto;    /* para scroll si se pasa el contenido */
-}
-
 form input, form textarea, form button {
     display: block;
     width: 100%;
@@ -240,8 +223,6 @@ button {
     color: white;
     border: none;
     padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
 }
 
 .btn-outline-secondary {
