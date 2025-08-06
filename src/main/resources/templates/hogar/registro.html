@@ -7,8 +7,11 @@ Ahora, que en el login/registro, no se extienda la card de login cuando se mueve
 
     <head>
         <title>Registro / Inicio</title>
-        <link rel="stylesheet" th:href="@{/css/estilos.css}">
+        <link rel="stylesheet" th:href="@{/css/estilos.css}" /> 
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" /> 
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.min.css}" /> 
     </head>
+
     <body>
         <head th:replace="layout/plantilla :: head"></head>
         <div th:replace="layout/plantilla :: header"></div>
@@ -23,7 +26,8 @@ Ahora, que en el login/registro, no se extienda la card de login cuando se mueve
                         <input type="text" name="cedula" placeholder="Número de Cédula" required />
                         <input type="text" name="telefono" placeholder="Teléfono" required />
                         <input type="password" name="password" placeholder="Contraseña" required />
-                        <textarea name="padecimientos" placeholder="Padecimientos (opcional)"></textarea>
+                        <textarea name="padecimientos" class="padecimientos-textarea" placeholder="Padecimientos (opcional)"></textarea>
+
                         <button type="submit">REGISTRARSE</button>
                     </form>
                 </div>
@@ -31,22 +35,50 @@ Ahora, que en el login/registro, no se extienda la card de login cuando se mueve
                 <!-- Formulario de Inicio de Sesión -->
                 <div class="inicio">
                     <h3>Inicio</h3>
+
+                    <div th:if="${param.error}">
+                        <p class="text-danger">Usuario o contraseña incorrectos.</p>
+                    </div>
+
                     <form th:action="@{/login}" method="post">
-                        <input type="text" name="cedula" placeholder="Número de Cédula / Código" required />
-                        <input type="password" name="password" placeholder="Contraseña" required />
-                        <button type="submit">INICIAR SESIÓN</button>
+                        <div class="form-group row my-3">
+                            <label class="col-md-5 my-auto" for="username">
+                                <i class="fas fa-user-lock"></i> [[#{login.username}]]:
+                            </label>
+                            <div class="col-md-7 my-auto">
+                                <input class="form-control" type="text" name="username" id="username" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group row my-3">
+                            <label class="col-md-5 my-auto" for="password">
+                                <i class="fas fa-key"></i> [[#{login.password}]]:
+                            </label>
+                            <div class="col-md-7 my-auto">
+                                <input class="form-control" type="password" name="password" id="password" required />
+                            </div>
+                        </div>
+
+                        <div class="card-footer col text-center">
+
+                            <a th:href="@{/registro/recordar}" class="btn btn-info">
+                                <i class="fas fa-envelope"></i> [[#{accion.recordar}]]
+                            </a>
+
+                            <button class="btn btn-success" type="submit">
+                                <i class="fas fa-sign-in-alt"></i> [[#{login.login}]]
+                            </button>
+                        </div>
                     </form>
-                    <a href="#" th:href="@{/olvide-contrasena}" style="display: block; width: max-content; margin: 0 auto;">Olvidé mi contraseña</a><br>
-                        <a href="#" 
-                           th:href="@{/pdf/documento-informativo.pdf}" 
+
+                    <a th:href="@{/olvide-contrasena}" style="display: block; width: max-content; margin: 0 auto;">Olvidé mi contraseña</a><br>
+
+                        <a th:href="@{/pdf/documento-informativo.pdf}" 
                            download 
                            style="display: block; width: max-content; margin: 1rem auto; color: #fff; background-color: #800000; padding: 8px 12px; border-radius: 5px; text-align: center; text-decoration: none;">
                             📄 Descargar PDF Informativo
                         </a>
-                </div>
-            </div>
-        </div>
 
-        <footer th:replace="layout/plantilla :: footer"></footer>
+        <div th:replace="layout/plantilla :: footer"></div>
     </body>
 </html>

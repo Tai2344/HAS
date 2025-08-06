@@ -1,0 +1,237 @@
+
+/* Estilos generales*/
+body {
+    background-color: #f5f1ea;
+    color: #5e7154;
+    font-family: Arial, sans-serif;
+    margin: 0; /*Esto elimina el margen del navegador */
+    display: flex;
+    flex-direction: column; /* Con esto se apilan los elementos verticalmente */
+    min-height: 100vh; /* Esto bloquea el footer al final de pagina y hace que el cuerpo cubra todo*/
+}
+
+/* Header */
+header {
+    background-color: #f5f1ea;
+    border-bottom: 2px solid #d3cfc9; /* Esto hace una línea sutil para separar */
+    padding: 10px 20px;
+}
+
+/* Esto organiza los elementos principales del header */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centra verticalmente los elementos */
+    gap: 20px;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 1.8rem; /* Esto cambia el tamaño de fuente */
+    color: #4c5643;
+    flex-shrink: 0; /* Esto es confuso pero basicamente hace que sea cual sea el tamaño de la pestaña, los logos nunca se encogen*/
+}
+
+.logo-title i {
+    font-size: 2.2rem; /* Tamaño del icono del árbolito */
+
+}
+.nav-center {
+    flex-grow: 1; /* Aqui se permite que este contenedor crezca y ocupe el espacio disponible, empujando los otros elementos a los lados */
+    display: flex;
+    justify-content: center; /* Se crentra los enlaces de navegación dentro de este contenedor */
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+
+.login-button { /* Puede ser reutilizable, intenté usar uno de bootstrap pero me tiraba errores así que basicamente es un boton manual*/
+    background-color: #2e9d36;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    text-decoration: none; /* Quita el subrayado de la etiqueta <a> generado por bootstrap*/
+    white-space: nowrap; /* Evita que el texto del botón se rompa */
+}
+
+/* Barra de navegación */
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.nav-links a {
+    color: #5e7154;
+    text-decoration: none;
+    padding: 5px;
+    position: relative;
+}
+
+
+.nav-links a::after { /* Esto es un separador vertical entre enlaces a base de pues... CSS, el punto es que se podía hacer en html
+                        pero al hacerlo en html pasaba que al seleccionar "Servicios" se seleccionaba también el "|" y pues no se ve del todo bien, esta función
+                        lo que hace es fijar los "|" después de cada enlace del menú*/
+    content: '|';
+    position: absolute;
+    right: -15px; /* Lo posiciona a la derecha de cada enlace */
+    color: #5e7154;
+}
+
+.nav-links a:last-child::after { /* Desconocía está funcion pero resumiendoselas lo que hace es eliminar el
+                                 ultimo "|" en la impresión del menú, no hace nada más, solo mantiene limpio el codigo */
+
+    content: '';
+}
+
+.search-container form { /* Era a base de bootstrap pero no lo podía replicar o acomodar al gusto como en el prototipo
+                        Como dado extra, el CSS del prototipo tiene más de 3000 lineas de codigo, esta barra de busqueda es reutilizable*/
+    display: flex;
+    width: 250px;
+}
+
+
+/* Footer */
+
+footer {
+    background-color: #c2a98e;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: auto; /*Como decia antes, con esto se fija el footer, se convierte en un sticky footer,
+                      da igual si la pagina está vacía siempre va a estar el footer en la parte inferior*/
+}
+
+footer a {
+    color: white;
+    text-decoration: underline; /* Para los enlaces de Preguntas Frecuentes y Terminos */
+}
+
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+/*Menú principal, Login, Registro y Asistencia*/
+
+.servicios-title {
+    margin-bottom: 3rem;
+}
+
+.servicios-menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 65px;
+    margin: 20px 0;
+}
+
+/* icono + texto */
+.servicio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.servicio-item i {
+    font-size: 45px;
+    margin-bottom: 15px;
+    color: #4c5643;
+}
+
+/* Hace como un hover al pasar el mouse sobre servicios, esto es reutilizable similar al transition: transform*/
+.servicio-item:hover {
+    transform: scale(1.05);
+}
+
+
+.card-header { /* Testimonios, estas cards son y pueden ser reutilizables para servicios, asistencia, galeria, etc, solo es ajustarlas*/
+    font-weight: bold;
+    color: #4c5643;
+    font-size: 1.7rem;
+}
+
+.card-body p {
+    font-size: 1.2rem;
+}
+
+.testimonial-block { /* Reutilizable */
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 120px;
+    text-align: center;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.testimonial-author {
+    font-weight: bold;
+    color: #555;
+    text-align: center;
+}
+
+.map-responsive iframe {  /* Hace que el mapa ocupe el 100% del espacio de su contenedor */
+    height: 100%;
+    width: 100%;
+}
+.registro-inicio {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+}
+.registro, .inicio {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 40%;
+    background-color: #fdfdfd;
+}
+form input, form textarea, form button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+}
+button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px;
+}
+
+.btn-outline-secondary {
+    color: #c2a98e;
+    border-color: #c2a98e;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #c2a98e;
+    color: white;
+    border-color: #c2a98e;
+}
