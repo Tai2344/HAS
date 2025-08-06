@@ -3,6 +3,12 @@ package com.hogar;
 import java.util.Locale;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -27,6 +33,7 @@ public class ProjectConfig implements WebMvcConfigurer {
         registry.addViewController("/ZonaPago").setViewName("hogar/ZonaPago");
         registry.addViewController("/Administracion").setViewName("hogar/Administracion");
         registry.addViewController("/Preguntas").setViewName("hogar/Preguntas");
+        registry.addViewController("/login").setViewName("hogar/login");
 
     }
 
@@ -61,4 +68,84 @@ public class ProjectConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
     }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests((requests) -> requests
+                // Páginas públicas
+                .requestMatchers("/", "/registro", "/Menu/**",
+                        "/Servicios/**", "/Asistencia/**", "/Talleres/**",
+                        "/Galeria/**", "/ZonaPago/**", "/Preguntas/**",
+                        "/login/**",
+                        "/js/**", "/webjars/**")
+                .permitAll()
+                // Solo administrador puede acceder a esta ruta
+                .requestMatchers("/Administracion/**").hasRole("ADMIN")
+                // Cualquier otra solicitud requiere estar autenticado
+                .anyRequest().authenticated()
+                )
+                // Configuración de login
+                .formLogin((form) -> form
+                .loginPage("/login") 
+                .defaultSuccessUrl("/Menu", true)
+                .permitAll()
+                )
+                // Configuración de logout
+                .logout((logout) -> logout
+                .permitAll()
+                );
+
+        return http.build();
+    }
+
+    /* El siguiente método se utiliza para completar la clase no es 
+    realmente funcional, la próxima semana se reemplaza con usuarios de BD */
+    @Bean
+    public UserDetailsService users() {
+        UserDetails admin1 = User.builder()
+                .username("AdminY")
+                .password("{noop}123")
+                .roles("USER", "ADMIN")
+                .build();
+
+        UserDetails admin2 = User.builder()
+                .username("AdminB")
+                .password("{noop}456")
+                .roles("USER", "ADMIN")
+                .build();
+
+        UserDetails admin3 = User.builder()
+                .username("AdminT")
+                .password("{noop}789")
+                .roles("USER", "ADMIN")
+                .build();
+
+        UserDetails admin4 = User.builder()
+                .username("AdminJ")
+                .password("{noop}abc")
+                .roles("USER", "ADMIN")
+                .build();
+
+        UserDetails user1 = User.builder()
+                .username("pedro")
+                .password("{noop}111")
+                .roles("USER")
+                .build();
+
+        UserDetails user2 = User.builder()
+                .username("maria")
+                .password("{noop}222")
+                .roles("USER")
+                .build();
+
+        UserDetails user3 = User.builder()
+                .username("ana")
+                .password("{noop}333")
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(admin1, admin2, admin3, admin4, user1, user2, user3);
+    }
+
 }

@@ -1,5 +1,3 @@
-
-/* Estilos generales*/
 body {
     background-color: #f5f1ea;
     color: #5e7154;
@@ -111,22 +109,31 @@ footer {
     padding: 15px 0;
     text-align: center;
     font-size: 1rem;
-    margin-top: auto; /*Como decia antes, con esto se fija el footer, se convierte en un sticky footer,
-                      da igual si la pagina está vacía siempre va a estar el footer en la parte inferior*/
 }
 
+/* Estilo para los enlaces dentro del footer */
+footer {
+    background-color: #c2a98e;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Estilo para los enlaces dentro del footer */
 footer a {
     color: white;
-    text-decoration: underline; /* Para los enlaces de Preguntas Frecuentes y Terminos */
+    text-decoration: underline;
 }
 
-
+/* Estilo del contenido dentro del footer */
 .footer-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     align-items: center;
+    text-align: center;
 }
 
 /*Menú principal, Login, Registro y Asistencia*/
@@ -185,6 +192,25 @@ footer a {
     min-height: 120px;
     text-align: center;
 }
+.card-body p {
+    font-size: 1.2rem;
+}
+.footer-content a.preguntas-frecuentes {
+    color: #fff !important;
+    text-decoration: underline !important;
+}
+
+.padecimientos-textarea {
+    min-height: 50px;
+    max-height: 100px;
+    resize: vertical;
+    overflow-y: auto;
+}
+
+.registro.card, .inicio.card {
+    height: 100%;
+    max-width: 500px;
+    min-width: 320px;
 
 .testimonial-text {
     font-style: italic;
@@ -203,16 +229,20 @@ footer a {
     width: 100%;
 }
 .registro-inicio {
-    display: flex;
-    justify-content: space-around;
-    padding: 40px;
+  display: flex;
+  justify-content: space-between; 
+  padding: 40px 0;
+  width: 100%; 
+  box-sizing: border-box;
 }
+
 .registro, .inicio {
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 40%;
-    background-color: #fdfdfd;
+  width: 45%; 
+  min-width: 300px;
+  box-sizing: border-box;
 }
+
+
 form input, form textarea, form button {
     display: block;
     width: 100%;
@@ -223,15 +253,13 @@ button {
     color: white;
     border: none;
     padding: 10px;
-}
-
-.btn-outline-secondary {
-    color: #c2a98e;
-    border-color: #c2a98e;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .btn-outline-secondary:hover {
     background-color: #c2a98e;
     color: white;
     border-color: #c2a98e;
+}
 }
