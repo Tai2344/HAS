@@ -17,7 +17,7 @@
     <description>Proyecto_Hogar_Arbol_Sabiduría </description>
     <properties>
         <java.version>23</java.version>
-        <maven.compiler.release>23</maven.compiler.release>
+        <maven.compiler.release>24</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
@@ -92,6 +92,22 @@
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity6</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.paypal.sdk</groupId>
+            <artifactId>paypal-core</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.paypal.sdk</groupId>
+            <artifactId>rest-api-sdk</artifactId>
+            <version>1.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.21.2</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -102,6 +118,7 @@
                 <configuration>
                     <compilerArgs>
                         <arg>-Xlint</arg>
+                        <arg>--enable-preview</arg>
                     </compilerArgs>
                     <annotationProcessorPaths>
                         <path>

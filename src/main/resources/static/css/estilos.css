@@ -106,18 +106,14 @@ header {
 footer {
     background-color: #c2a98e;
     color: white;
-    padding: 15px 0;
     text-align: center;
-    font-size: 1rem;
-}
-
-/* Estilo para los enlaces dentro del footer */
-footer {
-    background-color: #c2a98e;
-    color: white;
-    padding: 15px 0;
-    text-align: center;
-    font-size: 1rem;
+    font: normal 14px/1.2 sans-serif;
+    padding: 12px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030;
 }
 
 /* Estilo para los enlaces dentro del footer */
@@ -173,7 +169,6 @@ footer a {
     transform: scale(1.05);
 }
 
-
 .card-header { /* Testimonios, estas cards son y pueden ser reutilizables para servicios, asistencia, galeria, etc, solo es ajustarlas*/
     font-weight: bold;
     color: #4c5643;
@@ -212,54 +207,54 @@ footer a {
     max-width: 500px;
     min-width: 320px;
 
-.testimonial-text {
-    font-style: italic;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
+    .testimonial-text {
+        font-style: italic;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
 
-.testimonial-author {
-    font-weight: bold;
-    color: #555;
-    text-align: center;
-}
+    .testimonial-author {
+        font-weight: bold;
+        color: #555;
+        text-align: center;
+    }
 
-.map-responsive iframe {  /* Hace que el mapa ocupe el 100% del espacio de su contenedor */
-    height: 100%;
-    width: 100%;
-}
-.registro-inicio {
-  display: flex;
-  justify-content: space-between; 
-  padding: 40px 0;
-  width: 100%; 
-  box-sizing: border-box;
-}
+    .map-responsive iframe {  /* Hace que el mapa ocupe el 100% del espacio de su contenedor */
+        height: 100%;
+        width: 100%;
+    }
+    .registro-inicio {
+        display: flex;
+        justify-content: space-between;
+        padding: 40px 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-.registro, .inicio {
-  width: 45%; 
-  min-width: 300px;
-  box-sizing: border-box;
-}
+    .registro, .inicio {
+        width: 45%;
+        min-width: 300px;
+        box-sizing: border-box;
+    }
 
 
-form input, form textarea, form button {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-}
-button {
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-}
+    form input, form textarea, form button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+    button {
+        background-color: green;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
 
-.btn-outline-secondary:hover {
-    background-color: #c2a98e;
-    color: white;
-    border-color: #c2a98e;
-}
+    .btn-outline-secondary:hover {
+        background-color: #c2a98e;
+        color: white;
+        border-color: #c2a98e;
+    }
 }

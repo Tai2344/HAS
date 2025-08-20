@@ -1,76 +1,83 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
-<head th:fragment="head">
-    <meta charset="UTF-8"/>
-    <title>Hogar Árbol de Sabiduría</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/Icon.png"/>
-    <link rel="stylesheet" th:href="@{/css/estilos.css}" />
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.min.css}" />
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-</head>
-<body>
-    <!-- Header -->
-    <header th:fragment="header">
-        <div class="header-content">
-            <div class="logo-title">
-                <img src="/img/Icon.png" alt="Ícono del árbol" width="50" height="50">
-                <span>Hogar Árbol de Sabiduría</span>
-            </div>
-            <div class="nav-center">
-                <div class="nav-links">
-                    <a th:href="@{/Menu}">Menú</a>
-                    <a th:href="@{/Talleres}">Talleres</a>
-                    <a th:href="@{/Servicios}">Servicios</a>
-                    <a th:href="@{/Galeria}">Galería</a>
-                    <a th:href="@{/Asistencia}">Asistencia</a>
-                    <a th:href="@{/Administracion}" sec:authorize="hasRole('ADMIN')">Administración</a>
+    <head th:fragment="head" th:inline="text">
+        <meta charset="UTF-8"/>
+        <title>[[#{plantillaprincipal.tituloapp}]]</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/Icon.png"/>
+        <link rel="stylesheet" th:href="@{/css/estilos.css}" />
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.min.css}" />
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <!-- Header -->
+        <header th:fragment="header" th:inline="text">
+            <div class="header-content">
+                <div class="logo-title">
+                    <img src="/img/Icon.png" width="50" height="50" alt="[[#{plantillaprincipal.logo.alt}]]">
+                    <span>[[#{plantillaprincipal.tituloapp}]]</span>
+                </div>
+                <div class="nav-center">
+                    <div class="nav-links">
+                        <a th:href="@{/Menu}">[[#{plantillaprincipal.menu}]]</a>
+                        <a th:href="@{/taller/listado}">[[#{plantillaprincipal.talleres}]]</a>
+                        <a th:href="@{/Servicios}">[[#{plantillaprincipal.servicios}]]</a>
+                        <a th:href="@{/Galeria}">[[#{plantillaprincipal.galeria}]]</a>
+                        <a th:href="@{/Asistencia}">[[#{plantillaprincipal.asistencia}]]</a>
+                        <a th:href="@{/administracion/listado}" sec:authorize="hasRole('ADMIN')">[[#{plantillaprincipal.administracion}]]</a>
+                    </div>
+                </div>
+
+                <!-- Bloque derecho: login/logout + selector de idioma -->
+                <div class="language-dropdown dropdown" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <div id="resultBlock" style="margin-bottom: 0;">
+                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                            <li class='nav-item'>
+                                <a th:href="@{/login}" class="btn btn-outline-success">
+                                    [[#{plantillaprincipal.login}]] <i class="fas fa-right-to-bracket"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav" sec:authorize="isAuthenticated()" style="display: flex; align-items: center; margin-bottom: 0;">
+                            <li class="nav-item my-auto" style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="font-weight: 500;">
+                                    [[#{plantillaprincipal.bienvenida.pre}]] <span sec:authentication="name"></span>[[#{plantillaprincipal.bienvenida.post}]]
+                                </span>
+                                <form method="post" th:action="@{/logout}" style="margin:0;">
+                                    <button class="btn btn-light" title="[[#{plantillaprincipal.cerrarsesion}]]">
+                                        <i class="fas fa-right-from-bracket"></i>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Selector de idioma -->
+                    <button class="btn dropdown-toggle" type="button" id="idiomaDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-globe"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="idiomaDropdown">
+                        <li><a class="dropdown-item" th:href="@{''(lang='es')}">[[#{plantillaprincipal.idioma.es}]]</a></li>
+                        <li><a class="dropdown-item" th:href="@{''(lang='en')}">[[#{plantillaprincipal.idioma.en}]]</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="dropdown language-dropdown" style="display: flex; align-items: center; gap: 0.5rem;">
-                <div id="resultBlock" style="margin-bottom: 0;">
-                    <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
-                        <li class='nav-item'>
-                            <a th:href="@{/login}" class="btn btn-outline-primary">
-                                Iniciar sesión <i class="fas fa-right-to-bracket"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav" sec:authorize="isAuthenticated()" style="display: flex; align-items: center; margin-bottom: 0;">
-                        <li class="nav-item my-auto" style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="font-weight: 500;">¡Te damos la bienvenida, <span sec:authentication="name"></span>!</span>
-                            <form method="post" th:action="@{/logout}" style="margin:0;">
-                                <button class="btn btn-light" title="Cerrar sesión">
-                                    <i class="fas fa-right-from-bracket"></i>
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-                <button class="btn dropdown-toggle" type="button" id="idiomaDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-globe"></i>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="idiomaDropdown">
-                    <li><a class="dropdown-item" href="#">Español</a></li>
-                    <li><a class="dropdown-item" href="#">English</a></li>
-                </ul>
+        </header>
+
+        <!-- Footer -->
+        <footer th:fragment="footer" th:inline="text">
+            <div class="footer-content text-center">
+                <span>
+                    <a th:href="@{/pdf/Terminos y Condiciones.pdf}" target="_blank">[[#{plantillaprincipal.footer.terminos}]]</a> |
+                    <a th:href="@{/Preguntas}" class="preguntas-frecuentes">[[#{plantillaprincipal.footer.preguntas}]]</a> |
+                </span>
+                &nbsp; &copy; 2025 | <span>[[#{plantillaprincipal.tituloapp}]]</span>
             </div>
-        </div>
-    </header>
-    <!-- Footer -->
-    <footer th:fragment="footer">
-        <div class="footer-content text-center">
-            <span>
-                <a th:href="@{/pdf/Terminos y Condiciones.pdf}" target="_blank">Términos y condiciones de uso</a> |
-                <a th:href="@{/Preguntas}" class="preguntas-frecuentes">Preguntas Frecuentes</a> |
-            </span>
-            &nbsp; &copy; 2025 | Hogar Árbol de Sabiduría
-        </div>
-    </footer>
-</body>
+        </footer>
+    </body>
 </html>
