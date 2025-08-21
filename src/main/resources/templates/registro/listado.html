@@ -9,43 +9,43 @@
 <main class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-7 col-lg-6">
-            <h3 class="mb-4 text-center">Registro de usuario</h3>
+            <h3 class="mb-4 text-center">[[#{registro.registro.usuario}]]</h3>
 
             <form th:action="@{/registro}" th:object="${usuario}" method="post" class="card p-4 shadow-sm">
                 <div class="mb-3">
-                    <label for="cedula" class="form-label">Cédula</label>
+                    <label for="cedula" class="form-label">[[#{registro.cedula}]]</label>
                     <input type="text" id="cedula" th:field="*{cedula}" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">Contraseña</label>
+                    <label for="password" class="form-label">[[#{registro.password}]]</label>
                     <input type="password" id="password" th:field="*{password}" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre</label>
+                    <label for="nombre" class="form-label">[[#{registro.nombre}]]</label>
                     <input type="text" id="nombre" th:field="*{nombre}" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="apellidos" class="form-label">Apellidos</label>
+                    <label for="apellidos" class="form-label">[[#{registro.apellido}]]</label>
                     <input type="text" id="apellidos" th:field="*{apellidos}" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="telefono" class="form-label">Teléfono</label>
+                    <label for="telefono" class="form-label">[[#{registro.telefono}]]</label>
                     <input type="text" id="telefono" th:field="*{telefono}" class="form-control">
                 </div>
 
                 <div class="mb-3">
-                    <label for="padecimiento" class="form-label">Padecimientos (opcional)</label>
+                    <label for="padecimiento" class="form-label">[[#{registro.padecimiento}]]</label>
                     <textarea id="padecimiento" th:field="*{padecimiento}" class="form-control padecimientos-textarea"></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-success w-100">Registrar</button>
+                <button type="submit" class="btn btn-success w-100">[[#{registro.registrar}]]</button>
 
                 <div class="text-center mt-3">
-                    <a th:href="@{/login}" class="btn btn-danger w-100">Regresar</a>
+                    <a th:href="@{/login}" class="btn btn-danger w-100">[[#{registro.regresar}]]</a>
                 </div>
             </form>
         </div>
@@ -54,5 +54,3 @@
 
 <footer th:replace="~{layout/plantilla :: footer}"></footer>
 </body>
-
-listado.login

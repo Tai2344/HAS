@@ -9,29 +9,29 @@
 <main class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
-            <h3 class="mb-4 text-center">Iniciar sesión</h3>
+            <h3 class="mb-4 text-center">[[#{login.iniciar.sesion}]]</h3>
 
             <div th:if="${param.error}" class="alert alert-danger" role="alert">
-                Credenciales inválidas. Inténtalo de nuevo.
+                [[#{login.error}]]
             </div>
             <div th:if="${param.logout}" class="alert alert-success" role="alert">
-                Has cerrado sesión correctamente.
+                [[#{login.success}]]
             </div>
 
             <form th:action="@{/login}" method="post" class="card p-4 shadow-sm">
                 <div class="mb-3">
-                    <label for="cedula" class="form-label">Cédula</label>
+                    <label for="cedula" class="form-label">[[#{login.cedula}]]</label>
                     <input type="text" id="cedula" name="cedula" class="form-control" placeholder="Cédula" required autofocus>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Contraseña</label>
+                    <label for="password" class="form-label">[[#{login.password}]]</label>
                     <input type="password" id="password" name="password" class="form-control" required>
                 </div>
 
-                <button type="submit" class="btn btn-success w-100">Autenticar</button>
+                <button type="submit" class="btn btn-success w-100">[[#{login.autenticar}]]</button>
 
                 <div class="text-center mt-3">
-                    <a th:href="@{/registro}" class="btn btn-warning w-100">Registrar</a>
+                    <a th:href="@{/registro}" class="btn btn-warning w-100">[[#{login.registrar}]]</a>
                 </div>
             </form>
         </div>
