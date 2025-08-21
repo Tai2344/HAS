@@ -7,62 +7,84 @@
         <div th:replace="layout/plantilla :: header"></div>
 
         <section class="container-fluid my-5" style="color: #5e7154;">
-            <h1 class="text-center servicios-title">Servicios</h1>
-            <p class="text-center fw-bold fs-5 mx-5">Explora nuestros servicios principales, diseñados para garantizar el bienestar integral de nuestros residentes en cada etapa de su vida</p>
+            <!-- Título y subtítulo principal -->
+            <h1 class="text-center servicios-title" th:text="#{servicios.titulo}"></h1>
+            <p class="text-center fw-bold fs-5 mx-5" th:text="#{servicios.subtitulo}"></p>
 
             <div class="row mt-4">
 
                 <!-- Atención personalizada -->
                 <div class="col-md-3 mb-3">
                     <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
-                        <div class="card-header text-center">Atención personalizada</div>
+                        <div class="card-header text-center" th:text="#{servicio.atencion.titulo}"></div>
                         <div class="card-body">
-                            <p>Brindamos acompañamiento diario en las actividades básicas como la higiene personal, el vestido, la alimentación y la movilidad, con personal calificado que ofrece atención cálida y respetuosa.</p>
-                            <p>También contamos con servicios de fisioterapia, hidroterapia y rehabilitación, adaptados al nivel funcional de cada residente, promoviendo así su autonomía y bienestar físico.</p>
+                            <p th:text="#{servicio.atencion.descripcion1}"></p>
+                            <p th:text="#{servicio.atencion.descripcion2}"></p>
                         </div>
-                        <img src="https://inafe.es/wp-content/uploads/ayuda-a-mayores-600x399.jpg" alt="Atención personalizada" class="img-fluid" style="height: 180px; object-fit: cover;">
+                        <div class="ratio ratio-16x9">
+                            <img th:src="@{https://inafe.es/wp-content/uploads/ayuda-a-mayores-600x399.jpg}" 
+                                 th:alt="#{servicio.atencion.titulo}" 
+                                 class="img-fluid" 
+                                 style="object-fit: cover;">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Estancia temporal o permanente -->
                 <div class="col-md-3 mb-3">
                     <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
-                        <div class="card-header text-center">Estancia temporal o permanente</div>
+                        <div class="card-header text-center" th:text="#{servicio.estancia.titulo}"></div>
                         <div class="card-body">
-                            <p>Ofrecemos alternativas flexibles de estancia, ya sea por recuperación, vacaciones familiares, o permanencia a largo plazo, con habitaciones confortables y servicios adaptados a cada situación.</p>
-                            <p>Incluimos seguimiento emocional, apoyo psicológico y actividades que permiten a los residentes sentirse acompañados y seguros durante su tiempo con nosotros.</p>
+                            <p th:text="#{servicio.estancia.descripcion1}"></p>
+                            <p th:text="#{servicio.estancia.descripcion2}"></p>
                         </div>
-                        <img src="https://www.amavir.es/wp-content/uploads/2023/09/tipos-estancias-residencias-mayores-scaled.webp" alt="Estancia temporal o permanente" class="img-fluid" style="height: 180px; object-fit: cover;">
+                        <div class="ratio ratio-16x9">
+                            <img th:src="@{https://www.amavir.es/wp-content/uploads/2023/09/tipos-estancias-residencias-mayores-scaled.webp}" 
+                                 th:alt="#{servicio.estancia.titulo}" 
+                                 class="img-fluid" 
+                                 style="object-fit: cover;">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Estimulación cognitiva -->
                 <div class="col-md-3 mb-3">
                     <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
-                        <div class="card-header text-center">Estimulación cognitiva</div>
+                        <div class="card-header text-center" th:text="#{servicio.cognitiva.titulo}"></div>
                         <div class="card-body">
-                            <p>Diseñamos programas especializados con ejercicios de memoria, atención, lenguaje y razonamiento lógico para mantener la mente activa y funcional el mayor tiempo posible.</p>
-                            <p>Las actividades se realizan en grupo e individualmente, fomentando la socialización, el trabajo en equipo y el fortalecimiento de las capacidades cognitivas de cada persona.</p>
+                            <p th:text="#{servicio.cognitiva.descripcion1}"></p>
+                            <p th:text="#{servicio.cognitiva.descripcion2}"></p>
                         </div>
-                        <img src="https://www.bienestaris.com/wp-content/uploads/2024/05/top-10-ejercicios-estimulacion-cognitiva-adultos-mayores-1.jpg" alt="Estimulación cognitiva" class="img-fluid" style="height: 180px; object-fit: cover;">
+                        <div class="ratio ratio-16x9">
+                            <img th:src="@{https://www.bienestaris.com/wp-content/uploads/2024/05/top-10-ejercicios-estimulacion-cognitiva-adultos-mayores-1.jpg}" 
+                                 th:alt="#{servicio.cognitiva.titulo}" 
+                                 class="img-fluid" 
+                                 style="object-fit: cover;">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Cuidado médico integral -->
                 <div class="col-md-3 mb-3">
                     <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
-                        <div class="card-header text-center">Cuidado médico integral</div>
+                        <div class="card-header text-center" th:text="#{servicio.medico.titulo}"></div>
                         <div class="card-body">
-                            <p>Contamos con atención médica general y especializada dentro de nuestras instalaciones, facilitando consultas, tratamientos, controles rutinarios y manejo de enfermedades crónicas.</p>
-                            <p>Además, nos encargamos de la coordinación de exámenes, administración de medicamentos y seguimiento clínico personalizado para cada residente.</p>
+                            <p th:text="#{servicio.medico.descripcion1}"></p>
+                            <p th:text="#{servicio.medico.descripcion2}"></p>
                         </div>
-                        <img src="https://www.expat.com/upload/guide/1632489509-shutterstock-1968439885-article_discover-t1632489509.jpg" alt="Cuidado médico integral" class="img-fluid" style="height: 180px; object-fit: cover;">
+                        <div class="ratio ratio-16x9">
+                            <img th:src="@{https://www.expat.com/upload/guide/1632489509-shutterstock-1968439885-article_discover-t1632489509.jpg}" 
+                                 th:alt="#{servicio.medico.titulo}" 
+                                 class="img-fluid" 
+                                 style="object-fit: cover;">
+                        </div>
                     </div>
                 </div>
 
             </div>
 
-            <p class="text-center fw-bold mt-4">Puedes encontrar más información en el documento PDF.</p>
+            <!-- Información adicional -->
+            <p class="text-center fw-bold mt-4" th:text="#{servicios.pdf.info}"></p>
         </section>
 
         <div th:replace="layout/plantilla :: footer"></div>

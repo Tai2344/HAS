@@ -7,29 +7,60 @@
         <div th:replace="layout/plantilla :: header"></div>
 
         <section class="container-fluid my-5" style="color: #5e7154;">
-            <h1 class="text-center servicios-title">¿En qué podemos ayudarte?</h1>
-            <p class="text-center fw-bold fs-5 mx-5">Consulta las dudas más frecuentes y conoce nuestra misión y valores.</p>
+            <h1 class="text-center servicios-title">[[#{titulo.ayuda}]]</h1>
+            <p class="text-center fw-bold fs-5 mx-5">[[#{subtitulo.ayuda}]]</p>
 
             <div class="row justify-content-center mt-4">
 
                 <!-- Preguntas frecuentes -->
                 <div class="col-md-5 mb-3">
                     <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
-                        <div class="card-header text-center">Preguntas frecuentes</div>
+                        <div class="card-header text-center">[[#{card.preguntas}]]</div>
                         <div class="card-body">
-
-                            <p>[[#{pregunta.uno}]]<span style="font-weight: 500;">R/</span> [[#{respuesta.uno}]]</p>
-                            <p>¿Qué se necesita para ingresar? <span style="font-weight: 500;">R/</span> Se requiere ser mayor de 60 años, exámenes médicos recientes y evaluación previa.</p>
-                            <p>¿Cuál es el costo y qué incluye? <span style="font-weight: 500;">R/</span> Incluye alojamiento, alimentación, cuidados y actividades diarias. Hay pago inicial y mensualidad.</p>
-                            <p>¿Qué tipo de talleres se ofrecen? <span style="font-weight: 500;">R/</span> Cognitivos, arte, música y actividad física. Algunos requieren matrícula adicional.</p>
-                            <p>¿Hay atención médica permanente? <span style="font-weight: 500;">R/</span> Sí, disponible 24/7 con personal médico calificado.</p>
-                            <p>¿Se permiten visitas familiares? <span style="font-weight: 500;">R/</span> Sí, en horarios definidos y bajo protocolo de salud.</p>
-                            <p>¿Pueden los residentes tener objetos personales? <span style="font-weight: 500;">R/</span> Sí, se permite traer pertenencias que no comprometan la seguridad.</p>
-                            <p>¿Se puede traer mobiliario propio? <span style="font-weight: 500;">R/</span> En algunos casos sí, según el espacio disponible y la seguridad del residente.</p>
-                            <p>¿Qué pasa si el residente requiere atención especializada? <span style="font-weight: 500;">R/</span> Se coordina con especialistas externos o traslados médicos cuando es necesario.</p>
-                            <p>¿Se respetan las preferencias alimenticias? <span style="font-weight: 500;">R/</span> Sí, ofrecemos menús personalizados según necesidades nutricionales y restricciones médicas.</p>
-                            <p>¿Hay actividades recreativas fuera del hogar? <span style="font-weight: 500;">R/</span> Sí, organizamos salidas supervisadas a parques, museos y actividades comunitarias.</p>
-                            <p>¿Cómo se mantiene la comunicación con la familia? <span style="font-weight: 500;">R/</span> A través de visitas, llamadas programadas y seguimiento por parte del personal.</p>
+                            <div class="mb-3">
+                                <p class="fw-bold">[[#{pregunta.uno}]]</p>
+                                <p><span class="fw-semibold">R/</span> [[#{respuesta.uno}]]</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold">[[#{pregunta.dos}]]</p>
+                                <p><span class="fw-semibold">R/</span> [[#{respuesta.dos}]]</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold">[[#{pregunta.tres}]]</p>
+                                <p><span class="fw-semibold">R/</span> [[#{respuesta.tres}]]</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold">[[#{pregunta.cuatro}]]</p>
+                                <p><span class="fw-semibold">R/</span> [[#{respuesta.cuatro}]]</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold">[[#{pregunta.cinco}]]</p>
+                                <p><span class="fw-semibold">R/</span> [[#{respuesta.cinco}]]</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold">[[#{pregunta.seis}]]</p>
+                                <p><span class="fw-semibold">R/</span> [[#{respuesta.seis}]]</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold">[[#{pregunta.siete}]]</p>
+                                <p><span class="fw-semibold">R/</span> [[#{respuesta.siete}]]</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold">[[#{pregunta.ocho}]]</p>
+                                <p><span class="fw-semibold">R/</span> [[#{respuesta.ocho}]]</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold">[[#{pregunta.nueve}]]</p>
+                                <p><span class="fw-semibold">R/</span> [[#{respuesta.nueve}]]</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold">[[#{pregunta.diez}]]</p>
+                                <p><span class="fw-semibold">R/</span> [[#{respuesta.diez}]]</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold">[[#{pregunta.once}]]</p>
+                                <p><span class="fw-semibold">R/</span> [[#{respuesta.once}]]</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -37,13 +68,11 @@
                 <!-- Historia, misión y valores -->
                 <div class="col-md-5 mb-3">
                     <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
-                        <div class="card-header text-center">Historia, Misión y Valores</div>
+                        <div class="card-header text-center">[[#{card.historia}]]</div>
                         <div class="card-body">
-                            <p><span style="font-weight: 500;">Historia:</span> Nacimos con el deseo profundo de crear un hogar lleno de respeto, calidez y compañía para personas mayores. Desde nuestros inicios, hemos trabajado con amor y dedicación para ofrecer un espacio donde cada residente se sienta valorado, acompañado y parte de una gran familia. Con el paso del tiempo, nos hemos consolidado como un lugar confiable que honra la sabiduría, la experiencia y la dignidad de quienes nos eligen.</p>
-
-                            <p><span style="font-weight: 500;">Misión:</span> Brindar un entorno seguro, humano y estimulante que promueva el bienestar integral de nuestros residentes. Nos enfocamos en ofrecer cuidados personalizados, actividades que fomenten la autonomía y espacios que fortalezcan los lazos afectivos. Nuestra misión es ser más que un lugar de estancia: un verdadero hogar donde se viva con alegría, tranquilidad y propósito.</p>
-
-                            <p><span style="font-weight: 500;">Valores:</span> Nos guiamos por el respeto hacia la historia y la individualidad de cada persona. Fomentamos una atención cálida y cercana que refleje empatía y humanidad. Nuestro compromiso es ofrecer un cuidado responsable, ético y de alta calidad. Creemos en la alegría como parte esencial de la vida, por eso promovemos un ambiente positivo, lleno de actividades que nutren el cuerpo y el alma. Además, entendemos el cuidado como un acompañamiento integral que considera lo físico, emocional, social y espiritual.</p>
+                            <p><span class="fw-bold">[[#{historia.titulo}]]</span> [[#{historia.texto}]]</p>
+                            <p><span class="fw-bold">[[#{mision.titulo}]]</span> [[#{mision.texto}]]</p>
+                            <p><span class="fw-bold">[[#{valores.titulo}]]</span> [[#{valores.texto}]]</p>
                         </div>
                     </div>
                 </div>
@@ -54,9 +83,3 @@
         <div th:replace="layout/plantilla :: footer"></div>
     </body>
 </html>
-
-prefijo + accion  + cantidad = 
-
-preguntas + uno =
-
-muestra.preguntas.uno =

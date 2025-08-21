@@ -1,6 +1,10 @@
 
 DROP SCHEMA IF EXISTS hogar_arbol; 
 
+CREATE USER '123'@'localhost' IDENTIFIED BY '456';
+GRANT ALL PRIVILEGES ON hogar_arbol.* TO '123'@'localhost';
+FLUSH PRIVILEGES;
+
 CREATE SCHEMA hogar_arbol;
 USE hogar_arbol;
 
@@ -114,12 +118,12 @@ INSERT INTO usuario (cedula, password, nombre, apellidos, telefono, padecimiento
 ('901230547', '$2a$10$URaKwN7yWIPWoeCGMMCOQ..JEh2oYlC2KJY.7kQGRDqKnO9GIh6Wy', 'Sofia', 'Diaz Ruiz', '6954-3218', 'Gastritis', 2);
 
 -- Inserta talleres iniciales con sus detalles
-INSERT INTO taller (codigo, nombre, descripcion, detalle, horario, icono, precio, activo) VALUES
-('001', 'Taller de pintura', 'Explora tu lado artístico con técnicas básicas.', 'Materiales incluidos', 'Lunes, 10:00 am – 11:30 am', 'fa-palette', 9000.00, TRUE),
-('002', 'Taller de yoga', 'Mejora tu flexibilidad y reduce el estrés.', 'Clase para todos los niveles', 'Martes, 9:00 am – 10:00 am', 'fa-person-walking', 5000.00, TRUE),
-('003', 'Taller de música', 'Sesiones grupales con instrumentos, canto y bailes.', 'Trae tu instrumento', 'Miércoles, 3:00 pm – 4:30 pm', 'fa-music', 15000.00, TRUE),
-('004', 'Taller de memoria', 'Ejercita tu mente con juegos y actividades cognitivas.', 'Incluye materiales', 'Jueves, 10:00 am – 11:30 am', 'fa-brain', 15000.00, TRUE),
-('005', 'Ejercicio', 'Mantente activo con ejercicios de bajo impacto en personas mayores.', 'Clase grupal', 'Viernes, 8:30 am – 11:00 am', 'fa-dumbbell', 10000.00, TRUE),
-('006', 'Taller de lectura', 'Comparte historias y participa en discusiones.', 'Libros incluidos', 'Sábado, 1:00 pm – 3:00 pm', 'fa-book-open', 15000.00, TRUE);
+INSERT INTO taller (codigo, nombre, descripcion, horario, icono, precio, activo) VALUES
+('001', 'Taller de pintura', 'Explora tu lado artístico con técnicas básicas.', 'Lunes, 10:00 am – 11:30 am', 'fa-palette', 9000.00, TRUE),
+('002', 'Taller de yoga', 'Mejora tu flexibilidad y reduce el estrés.', 'Martes, 9:00 am – 10:00 am', 'fa-person-walking', 5000.00, TRUE),
+('003', 'Taller de música', 'Sesiones grupales con instrumentos, canto y bailes.', 'Miércoles, 3:00 pm – 4:30 pm', 'fa-music', 15000.00, TRUE),
+('004', 'Taller de memoria', 'Ejercita tu mente con juegos y actividades cognitivas.', 'Jueves, 10:00 am – 11:30 am', 'fa-brain', 15000.00, TRUE),
+('005', 'Ejercicio', 'Mantente activo con ejercicios de bajo impacto en personas mayores.', 'Viernes, 8:30 am – 11:00 am', 'fa-dumbbell', 10000.00, TRUE),
+('006', 'Taller de lectura', 'Comparte historias y participa en discusiones.', 'Sábado, 1:00 pm – 3:00 pm', 'fa-book-open', 15000.00, TRUE);
 
 
