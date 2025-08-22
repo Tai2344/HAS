@@ -9,9 +9,10 @@ import java.time.LocalDate;
 @Data
 @Table(name = "reserva_taller")
 public class ReservaTaller {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_reserva_taller") 
+    @Column(name = "id_reserva_taller")
     private Integer idReserva;
 
     @ManyToOne
@@ -19,8 +20,12 @@ public class ReservaTaller {
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_taller", nullable = false)
-    private Taller taller;
+    @JoinColumn(name = "id_taller_es")
+    private TallerEs tallerEs;
+
+    @ManyToOne
+    @JoinColumn(name = "id_taller_en")
+    private TallerEn tallerEn;
 
     @ManyToOne
     @JoinColumn(name = "id_factura_taller", nullable = true)

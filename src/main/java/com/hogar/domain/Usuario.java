@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 @Table(name = "usuario")
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
@@ -28,7 +29,7 @@ public class Usuario {
     private String padecimiento;
 
     @Column(name = "password", nullable = false)
-    private String password; // Asegúrate de que exista
+    private String password;
 
     @ManyToOne
     @JoinColumn(name = "id_rol", nullable = false)
@@ -36,4 +37,7 @@ public class Usuario {
 
     @Column(name = "activo", nullable = false)
     private Boolean activo = true;
+
+    @Column(name = "agendoCita", nullable = false)
+    private Boolean agendoCita = false;
 }

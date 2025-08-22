@@ -3,72 +3,70 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="layout/plantilla :: head"></head>
-    <body  style="background-color: #f9f7f4; margin: 0;">
+    <body style="background-color: #f9f7f4; margin: 0;">
         <div th:replace="layout/plantilla :: header"></div>
 
         <section class="container-fluid my-5" style="color: #5e7154;">
-            <h1 class="text-center servicios-title">Asistencia</h1>
-            <p class="text-center fw-bold fs-5 mx-5">En nuestro hogar, cada detalle está pensado para brindar tranquilidad a las familias y bienestar a quienes nos confían su cuidado. 
-                A continuación te compartimos información importante sobre cómo acompañamos este proceso con claridad y cercanía</p>
+            <div class="container mt-5" th:inline="text">
+                <h1 class="text-center servicios-title">[[#{asistencia.titulo}]]</h1>
+                <p class="text-center fw-bold fs-5 mx-5">[[#{asistencia.descripcion}]]</p>
 
-            <div class="row mt-4">
+                <div class="row mt-4">
 
-                <!-- Contacto Directo -->
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
-                        <div class="card-header text-center">Contacto Directo</div>
-                        <div class="card-body">
-                            <p> Nuestro equipo está siempre disponible para atender tus consultas, programar una visita o ayudarte en caso de emergencias</p>
-                            <p><i class="fa-solid fa-phone"></i> Teléfono: +506 2447-2093</p>
-                            <p><i class="fa-brands fa-whatsapp"></i> Whatsapp: +506 8488-4329</p>
-                            <p>️<i class="fa-solid fa-envelope"></i> Correo: arboldesabiduria15@gmail.com</p>
-                            <p><i class="fa-solid fa-map-pin"></i> Ubicación: San Ramón, Alajuela, Costa Rica</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Proceso y requisitos de admisión -->
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
-                        <div class="card-header text-center">Proceso y requisitos de admisión</div>
-                        <div class="card-body">
-                            <p><strong>Pasos del proceso:</strong></p>
-
-                            <p>Coordinamos una visita y entrevista inicial</p>
-                            <p>Revisamos la condición médica y social del futuro residente</p>
-                            <p>Ficha de medicamentos y tratamientos actuales</p>
-                            <p>Definimos en conjunto el tipo de atención requerida</p>
-                            <p>Se firma el contrato y se programa la fecha de ingreso</p>
-
-                            <div class="text-center mt-3">
-                                <button class="btn btn-outline-secondary">Iniciar proceso de admisión</button>
+                    <!-- Contacto Directo -->
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
+                            <div class="card-header text-center">[[#{asistencia.contacto.titulo}]]</div>
+                            <div class="card-body">
+                                <p>[[#{asistencia.contacto.disponible}]]</p>
+                                <p><i class="fa-solid fa-phone"></i> [[#{asistencia.contacto.telefono}]]</p>
+                                <p><i class="fa-brands fa-whatsapp"></i> [[#{asistencia.contacto.whatsapp}]]</p>
+                                <p>️<i class="fa-solid fa-envelope"></i> [[#{asistencia.contacto.correo}]]</p>
+                                <p><i class="fa-solid fa-map-pin"></i> [[#{asistencia.contacto.ubicacion}]]</p>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Políticas de visita -->
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
-                        <div class="card-header text-center">Políticas de visita</div>
-                        <div class="card-body">
-                            <p>Fomentamos la cercanía con los seres queridos porque creemos en el valor del vínculo familiar</p>
-                            <p><strong>Horario de visitas:</strong> 
-                                <p><i class="fa-solid fa-calendar-days"></i>  Lunes a domingo </p>
-                                <p><i class="fa-solid fa-clock"></i>  de 9:00 a.m. a 6:00 p.m.</p>
-                                <p>Recomendamos mantener un ambiente tranquilo y respetuoso durante la visita.</p>
-                                <p>No se permiten visitas si el visitante presenta síntomas de gripe u otra enfermedad contagiosa.</p>
-                                <p>Las visitas fuera de horario pueden coordinarse con el personal administrativo.</p>
+                    <!-- Proceso y requisitos de admisión -->
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
+                            <div class="card-header text-center">[[#{asistencia.admision.titulo}]]</div>
+                            <div class="card-body">
+                                <p><strong>[[#{asistencia.admision.pasos.titulo}]]</strong></p>
+                                <p>[[#{asistencia.admision.paso1}]]</p>
+                                <p>[[#{asistencia.admision.paso2}]]</p>
+                                <p>[[#{asistencia.admision.paso3}]]</p>
+                                <p>[[#{asistencia.admision.paso4}]]</p>
+                                <p>[[#{asistencia.admision.paso5}]]</p>
                                 <div class="text-center mt-3">
-                                    <button class="btn btn-outline-secondary">Ver protocolo completo</button>
+                                    <button class="btn btn-outline-secondary">[[#{asistencia.admision.boton}]]</button>
                                 </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                    <!-- Políticas de visita -->
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
+                            <div class="card-header text-center">[[#{asistencia.visita.titulo}]]</div>
+                            <div class="card-body">
+                                <p>[[#{asistencia.visita.descripcion}]]</p>
+                                <p><strong>[[#{asistencia.visita.horario.titulo}]]</strong></p>
+                                <p><i class="fa-solid fa-calendar-days"></i> [[#{asistencia.visita.horario.dias}]] </p>
+                                <p><i class="fa-solid fa-clock"></i> [[#{asistencia.visita.horario.horas}]]</p>
+                                <p>[[#{asistencia.visita.ambiente}]]</p>
+                                <p>[[#{asistencia.visita.restriccion.salud}]]</p>
+                                <p>[[#{asistencia.visita.restriccion.horario}]]</p>
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-outline-secondary">[[#{asistencia.visita.boton}]]</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </section>
         <div th:replace="layout/plantilla :: footer">
         </div>
     </body>
 </html>
-

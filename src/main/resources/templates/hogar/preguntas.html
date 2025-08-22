@@ -7,76 +7,78 @@
         <div th:replace="layout/plantilla :: header"></div>
 
         <section class="container-fluid my-5" style="color: #5e7154;">
-            <h1 class="text-center servicios-title">[[#{titulo.ayuda}]]</h1>
-            <p class="text-center fw-bold fs-5 mx-5">[[#{subtitulo.ayuda}]]</p>
+            <div class="container mt-5" th:inline="text">
+                <h1 class="text-center servicios-title">[[#{titulo.ayuda}]]</h1>
+                <p class="text-center fw-bold fs-5 mx-5">[[#{subtitulo.ayuda}]]</p>
 
-            <div class="row justify-content-center mt-4">
+                <div class="row justify-content-center mt-4">
 
-                <!-- Preguntas frecuentes -->
-                <div class="col-md-5 mb-3">
-                    <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
-                        <div class="card-header text-center">[[#{card.preguntas}]]</div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <p class="fw-bold">[[#{pregunta.uno}]]</p>
-                                <p><span class="fw-semibold">R/</span> [[#{respuesta.uno}]]</p>
-                            </div>
-                            <div class="mb-3">
-                                <p class="fw-bold">[[#{pregunta.dos}]]</p>
-                                <p><span class="fw-semibold">R/</span> [[#{respuesta.dos}]]</p>
-                            </div>
-                            <div class="mb-3">
-                                <p class="fw-bold">[[#{pregunta.tres}]]</p>
-                                <p><span class="fw-semibold">R/</span> [[#{respuesta.tres}]]</p>
-                            </div>
-                            <div class="mb-3">
-                                <p class="fw-bold">[[#{pregunta.cuatro}]]</p>
-                                <p><span class="fw-semibold">R/</span> [[#{respuesta.cuatro}]]</p>
-                            </div>
-                            <div class="mb-3">
-                                <p class="fw-bold">[[#{pregunta.cinco}]]</p>
-                                <p><span class="fw-semibold">R/</span> [[#{respuesta.cinco}]]</p>
-                            </div>
-                            <div class="mb-3">
-                                <p class="fw-bold">[[#{pregunta.seis}]]</p>
-                                <p><span class="fw-semibold">R/</span> [[#{respuesta.seis}]]</p>
-                            </div>
-                            <div class="mb-3">
-                                <p class="fw-bold">[[#{pregunta.siete}]]</p>
-                                <p><span class="fw-semibold">R/</span> [[#{respuesta.siete}]]</p>
-                            </div>
-                            <div class="mb-3">
-                                <p class="fw-bold">[[#{pregunta.ocho}]]</p>
-                                <p><span class="fw-semibold">R/</span> [[#{respuesta.ocho}]]</p>
-                            </div>
-                            <div class="mb-3">
-                                <p class="fw-bold">[[#{pregunta.nueve}]]</p>
-                                <p><span class="fw-semibold">R/</span> [[#{respuesta.nueve}]]</p>
-                            </div>
-                            <div class="mb-3">
-                                <p class="fw-bold">[[#{pregunta.diez}]]</p>
-                                <p><span class="fw-semibold">R/</span> [[#{respuesta.diez}]]</p>
-                            </div>
-                            <div class="mb-3">
-                                <p class="fw-bold">[[#{pregunta.once}]]</p>
-                                <p><span class="fw-semibold">R/</span> [[#{respuesta.once}]]</p>
+                    <!-- Preguntas frecuentes -->
+                    <div class="col-md-5 mb-3">
+                        <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
+                            <div class="card-header text-center">[[#{card.preguntas}]]</div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <p class="fw-bold">[[#{pregunta.uno}]]</p>
+                                    <p><span class="fw-semibold">R/</span> [[#{respuesta.uno}]]</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="fw-bold">[[#{pregunta.dos}]]</p>
+                                    <p><span class="fw-semibold">R/</span> [[#{respuesta.dos}]]</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="fw-bold">[[#{pregunta.tres}]]</p>
+                                    <p><span class="fw-semibold">R/</span> [[#{respuesta.tres}]]</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="fw-bold">[[#{pregunta.cuatro}]]</p>
+                                    <p><span class="fw-semibold">R/</span> [[#{respuesta.cuatro}]]</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="fw-bold">[[#{pregunta.cinco}]]</p>
+                                    <p><span class="fw-semibold">R/</span> [[#{respuesta.cinco}]]</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="fw-bold">[[#{pregunta.seis}]]</p>
+                                    <p><span class="fw-semibold">R/</span> [[#{respuesta.seis}]]</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="fw-bold">[[#{pregunta.siete}]]</p>
+                                    <p><span class="fw-semibold">R/</span> [[#{respuesta.siete}]]</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="fw-bold">[[#{pregunta.ocho}]]</p>
+                                    <p><span class="fw-semibold">R/</span> [[#{respuesta.ocho}]]</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="fw-bold">[[#{pregunta.nueve}]]</p>
+                                    <p><span class="fw-semibold">R/</span> [[#{respuesta.nueve}]]</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="fw-bold">[[#{pregunta.diez}]]</p>
+                                    <p><span class="fw-semibold">R/</span> [[#{respuesta.diez}]]</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="fw-bold">[[#{pregunta.once}]]</p>
+                                    <p><span class="fw-semibold">R/</span> [[#{respuesta.once}]]</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Historia, misión y valores -->
-                <div class="col-md-5 mb-3">
-                    <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
-                        <div class="card-header text-center">[[#{card.historia}]]</div>
-                        <div class="card-body">
-                            <p><span class="fw-bold">[[#{historia.titulo}]]</span> [[#{historia.texto}]]</p>
-                            <p><span class="fw-bold">[[#{mision.titulo}]]</span> [[#{mision.texto}]]</p>
-                            <p><span class="fw-bold">[[#{valores.titulo}]]</span> [[#{valores.texto}]]</p>
+                    <!-- Historia, misión y valores -->
+                    <div class="col-md-5 mb-3">
+                        <div class="card h-100" style="background-color: rgba(255, 255, 255, 0.6);">
+                            <div class="card-header text-center">[[#{card.historia}]]</div>
+                            <div class="card-body">
+                                <p><span class="fw-bold">[[#{historia.titulo}]]</span> [[#{historia.texto}]]</p>
+                                <p><span class="fw-bold">[[#{mision.titulo}]]</span> [[#{mision.texto}]]</p>
+                                <p><span class="fw-bold">[[#{valores.titulo}]]</span> [[#{valores.texto}]]</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </section>
 

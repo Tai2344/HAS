@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{layout/plantilla :: head}">
-    <title th:inline="text">[[#{editarusuario.titulo}]]</title>
+    <title th:inline="text">[[#{aministracion.editarusuario.titulo}]]</title>
 </head>
 <body>
     <header th:replace="~{layout/plantilla :: header}"></header>
-    <main class="container mt-5" th:inline="text">
-        <h2>[[#{editarusuario.titulo}]]</h2>
+    <div class="container mt-5" th:inline="text">
+        <h2>[[#{aministracion.editarusuario.titulo}]]</h2>
+        </div
         <form th:action="@{/administracion/editarUsuario}" th:object="${usuario}" method="post">
             <input type="hidden" th:field="*{idUsuario}" />
             <div class="mb-3">
-                <label class="form-label">[[#{editarusuario.cedula}]]</label>
+                <label class="form-label">[[#{aministracion.editarusuario.cedula}]]</label>
                 <input type="text" th:field="*{cedula}" class="form-control" readonly />
             </div>
             <div class="mb-3">
-                <label class="form-label">[[#{editarusuario.nombre}]]</label>
+                <label class="form-label">[[#{aministracion.editarusuario.nombre}]]</label>
                 <input type="text" th:field="*{nombre}" class="form-control" />
             </div>
             <div class="mb-3">
-                <label class="form-label">[[#{editarusuario.apellidos}]]</label>
+                <label class="form-label">[[#{aministracion.editarusuario.apellidos}]]</label>
                 <input type="text" th:field="*{apellidos}" class="form-control" />
             </div>
             <div class="mb-3">
-                <label class="form-label">[[#{editarusuario.telefono}]]</label>
+                <label class="form-label">[[#{aministracion.editarusuario.telefono}]]</label>
                 <input type="text" th:field="*{telefono}" class="form-control" />
             </div>
             <div class="mb-3">
-                <label class="form-label">[[#{editarusuario.padecimiento}]]</label>
+                <label class="form-label">[[#{aministracion.editarusuario.padecimiento}]]</label>
                 <input type="text" th:field="*{padecimiento}" class="form-control" />
             </div>
             <div class="mb-3">
-                <label class="form-label">[[#{editarusuario.rol}]]</label>
+                <label class="form-label">[[#{aministracion.editarusuario.rol}]]</label>
                 <select th:field="*{rol.idRol}" class="form-select">
-                    <option value="1">[[#{editarusuario.rol.admin}]]</option>
-                    <option value="2">[[#{editarusuario.rol.usuario}]]</option>
+                    <option value="1">[[#{aministracion.editarusuario.rol.admin}]]</option>
+                    <option value="2">[[#{aministracion.editarusuario.rol.usuario}]]</option>
                 </select>
             </div>
             <div class="mb-3">
-                <label class="form-label">[[#{editarusuario.activo}]]</label>
+                <label class="form-label">[[#{aministracion.editarusuario.activo}]]</label>
                 <select th:field="*{activo}" class="form-select">
-                    <option value="true">[[#{editarusuario.activo.si}]]</option>
-                    <option value="false">[[#{editarusuario.activo.no}]]</option>
+                    <option value="true">[[#{aministracion.editarusuario.activo.si}]]</option>
+                    <option value="false">[[#{aministracion.editarusuario.activo.no}]]</option>
                 </select>
             </div>
             <!-- Campo oculto para mantener la contraseña existente -->
             <input type="hidden" th:field="*{password}" th:value="${usuario.password}" />
-            <button type="submit" class="btn btn-success">[[#{editarusuario.guardar}]]</button>
-            <a href="/administracion/listado" class="btn btn-danger">[[#{editarusuario.cancelar}]]</a>
+            <button type="submit" class="btn btn-success">[[#{aministracion.editarusuario.guardar}]]</button>
+            <a href="/administracion/listado" class="btn btn-danger">[[#{aministracion.editarusuario.cancelar}]]</a>
         </form>
-    </main>
     <footer th:replace="~{layout/plantilla :: footer}"></footer>
 </body>
 </html>

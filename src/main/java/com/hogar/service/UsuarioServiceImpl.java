@@ -7,6 +7,7 @@ import com.hogar.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -44,5 +45,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public Optional<Usuario> buscarPorId(Integer id) {
         return usuarioRepository.findById(id);
+    }
+
+    @Override
+    @Transactional
+    public void marcarReserva(Integer idUsuario) {
+        usuarioRepository.marcarReserva(idUsuario);
     }
 }

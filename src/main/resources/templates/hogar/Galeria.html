@@ -2,141 +2,122 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-<head th:replace="layout/plantilla :: head"></head>
+    <head th:replace="layout/plantilla :: head"></head>
 
-<body style="background-color: #f9f7f4; margin: 0;">
-  <div th:replace="layout/plantilla :: header"></div>
+    <body style="background-color: #f9f7f4; margin: 0;">
+        <div th:replace="layout/plantilla :: header"></div>
 
-  <section class="container-fluid my-5" style="color: #5e7154;">
-    <h1 class="text-center servicios-title">Galería</h1>
-    <p class="text-center fw-bold fs-5 mx-5">
-      Nuestras instalaciones están diseñadas para brindar comodidad, cariño y seguridad. 
-      Aquí compartimos algunos espacios que hacen de este lugar un verdadero hogar
-    </p>
+        <section class="container-fluid my-5" style="color: #5e7154;">
+            <div class="container mt-5" th:inline="text">
+                <h1 class="text-center servicios-title">[[#{galeria.titulo}]]</h1>
+                <p class="text-center fw-bold fs-5 mx-5">
+                    [[#{galeria.descripcion}]]
+                </p>
 
-    <!-- ================== 3 CARDS CON CAROUSEL (centrados) ================== -->
-    <div class="row justify-content-center mt-5">
+                <!-- ================== 3 CARDS CON CAROUSEL (centrados) ================== -->
+                <div class="row justify-content-center mt-5">
+                    <!-- Card 1 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm">
+                            <div id="carouselHabitaciones" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselHabitaciones" data-bs-slide-to="0" class="active"></button>
+                                    <button type="button" data-bs-target="#carouselHabitaciones" data-bs-slide-to="1"></button>
+                                    <button type="button" data-bs-target="#carouselHabitaciones" data-bs-slide-to="2"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active"><img src="/img/habitacion1.png" class="d-block w-100" alt="[[#{galeria.habitaciones.alt1}]]"></div>
+                                    <div class="carousel-item"><img src="/img/habitacion2.png" class="d-block w-100" alt="[[#{galeria.habitaciones.alt2}]]"></div>
+                                    <div class="carousel-item"><img src="/img/habitacion3.png" class="d-block w-100" alt="[[#{galeria.habitaciones.alt3}]]"></div>
+                                </div>
+                            </div>
+                            <div class="card-body text-center"><h5 class="card-title">[[#{galeria.habitaciones.titulo}]]</h5></div>
+                        </div>
+                    </div>
 
-      <!-- Card 1: Habitaciones -->
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm">
-          <div id="carouselHabitaciones" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselHabitaciones" data-bs-slide-to="0" class="active"></button>
-              <button type="button" data-bs-target="#carouselHabitaciones" data-bs-slide-to="1"></button>
-              <button type="button" data-bs-target="#carouselHabitaciones" data-bs-slide-to="2"></button>
+                    <!-- Card 2 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm">
+                            <div id="carouselPersonal" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselPersonal" data-bs-slide-to="0" class="active"></button>
+                                    <button type="button" data-bs-target="#carouselPersonal" data-bs-slide-to="1"></button>
+                                    <button type="button" data-bs-target="#carouselPersonal" data-bs-slide-to="2"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active"><img src="/img/personal3.png" class="d-block w-100" alt="[[#{galeria.personal.alt1}]]"></div>
+                                    <div class="carousel-item"><img src="/img/personal2.png" class="d-block w-100" alt="[[#{galeria.personal.alt2}]]"></div>
+                                    <div class="carousel-item"><img src="/img/personal1.png" class="d-block w-100" alt="[[#{galeria.personal.alt3}]]"></div>
+                                </div>
+                            </div>
+                            <div class="card-body text-center"><h5 class="card-title">[[#{galeria.personal.titulo}]]</h5></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm">
+                            <div id="carouselEspacios" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselEspacios" data-bs-slide-to="0" class="active"></button>
+                                    <button type="button" data-bs-target="#carouselEspacios" data-bs-slide-to="1"></button>
+                                    <button type="button" data-bs-target="#carouselEspacios" data-bs-slide-to="2"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active"><img src="/img/Espacio.png" class="d-block w-100" alt="[[#{galeria.espacios.alt1}]]"></div>
+                                    <div class="carousel-item"><img src="/img/Espacio 1.png" class="d-block w-100" alt="[[#{galeria.espacios.alt2}]]"></div>
+                                    <div class="carousel-item"><img src="/img/Espacio 3.png" class="d-block w-100" alt="[[#{galeria.espacios.alt3}]]"></div>
+                                </div>
+                            </div>
+                            <div class="card-body text-center"><h5 class="card-title">[[#{galeria.espacios.titulo}]]</h5></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ================== /3 CARDS ================== -->
+
+                <!-- ================== Card "Agendar cita" ================== -->
+                <div class="row justify-content-center mt-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card shadow" style="background-color:#fff3ee;">
+                            <img src="/img/visita1.png" class="card-img-top agenda-img" alt="[[#{galeria.agendar.alt}]]">
+                            <div class="card-body text-center">
+                                <p class="card-text fw-bold mb-3">
+                                    [[#{galeria.agendar.descripcion}]]
+                                </p>
+
+                                <!-- Formulario que manda al backend -->
+                                <form th:action="@{/reservas/agendar}" method="post">
+                                    <button type="submit" class="btn btn-warning text-white">
+                                        [[#{galeria.agendar.boton}]]
+                                    </button>
+                                </form>
+
+                                <!-- Mensaje de éxito -->
+                                <div th:if="${mensajeExito}" class="alert alert-success mt-3" role="alert">
+                                    <span th:text="${mensajeExito}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ================== /Card "Agendar cita" ================== -->
             </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active"><img src="/img/habitacion1.png" class="d-block w-100" alt="Habitación 1"></div>
-              <div class="carousel-item"><img src="/img/habitacion2.png" class="d-block w-100" alt="Habitación 2"></div>
-              <div class="carousel-item"><img src="/img/habitacion3.png" class="d-block w-100" alt="Habitación 3"></div>
-            </div>
-          </div>
-          <div class="card-body text-center"><h5 class="card-title">Habitaciones</h5></div>
-        </div>
-      </div>
+        </section>
 
-      <!-- Card 2: Nuestro Personal -->
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm">
-          <div id="carouselPersonal" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselPersonal" data-bs-slide-to="0" class="active"></button>
-              <button type="button" data-bs-target="#carouselPersonal" data-bs-slide-to="1"></button>
-              <button type="button" data-bs-target="#carouselPersonal" data-bs-slide-to="2"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active"><img src="/img/personal3.png" class="d-block w-100" alt="Personal 1"></div>
-              <div class="carousel-item"><img src="/img/personal2.png" class="d-block w-100" alt="Personal 2"></div>
-              <div class="carousel-item"><img src="/img/personal1.png" class="d-block w-100" alt="Personal 3"></div>
-            </div>
-          </div>
-          <div class="card-body text-center"><h5 class="card-title">Nuestro Personal</h5></div>
-        </div>
-      </div>
+        <div th:replace="layout/plantilla :: footer"></div>
 
-      <!-- Card 3: Espacios Comunes -->
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm">
-          <div id="carouselEspacios" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselEspacios" data-bs-slide-to="0" class="active"></button>
-              <button type="button" data-bs-target="#carouselEspacios" data-bs-slide-to="1"></button>
-              <button type="button" data-bs-target="#carouselEspacios" data-bs-slide-to="2"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active"><img src="/img/Espacio.png" class="d-block w-100" alt="Espacio 1"></div>
-              <div class="carousel-item"><img src="/img/Espacio 1.png" class="d-block w-100" alt="Espacio 2"></div>
-              <div class="carousel-item"><img src="/img/Espacio 3.png" class="d-block w-100" alt="Espacio 3"></div>
-            </div>
-          </div>
-          <div class="card-body text-center"><h5 class="card-title">Espacios Comunes</h5></div>
-        </div>
-      </div>
-
-    </div>
-    <!-- ================== /3 CARDS CON CAROUSEL ================== -->
-
-    <!-- ================== Card "Agendar cita" ================== -->
-    <div class="row justify-content-center mt-4">
-      <div class="col-lg-4 col-md-6">
-        <div class="card shadow" style="background-color:#fff3ee;">
-          <!-- Imagen con proporción original -->
-          <img src="/img/visita1.png" class="card-img-top agenda-img" alt="Visita">
-          <div class="card-body text-center">
-            <p class="card-text fw-bold mb-3">
-              ¿Querés conocernos en persona? Te invitamos a agendar una visita y descubrir lo que nos hace especiales
-            </p>
-            <button id="btnAgendar" class="btn btn-warning text-white">Agendar cita</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Toast centrado -->
-    <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1100;">
-      <div id="toastCita" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-          <div class="toast-body">
-            ¡Cita agendada con éxito! Te contactaremos para confirmar la hora
-          </div>
-          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-      </div>
-    </div>
-    <!-- ================== /Card "Agendar cita" ================== -->
-
-  </section>
-
-  <div th:replace="layout/plantilla :: footer"></div>
-
-  <!-- JS para el toast -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const toastEl = document.getElementById('toastCita');
-      const toast = new bootstrap.Toast(toastEl, { delay: 3000 });
-      document.getElementById('btnAgendar').addEventListener('click', function () {
-        toast.show();
-      });
-    });
-  </script>
-
-  <!-- Estilos adicionales -->
-  <style>
-    /* Alto uniforme para imágenes del carousel */
-    .card .carousel-item img {
-      height: 320px;
-      object-fit: cover;
-    }
-
-    /* Imagen inferior proporcional y centrada */
-    .agenda-img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      border-radius: 12px;
-    }
-  </style>
-</body>
+        <style>
+            .card .carousel-item img {
+                height: 320px;
+                object-fit: cover;
+            }
+            .agenda-img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+                border-radius: 12px;
+            }
+        </style>
+    </body>
 </html>

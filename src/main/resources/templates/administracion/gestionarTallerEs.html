@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"><head th:replace="~{layout/plantilla :: head}">
+    <title th:text="${#fields.hasErrors()} ? 'Editar taller en español' : ( ${tallerEs.idTaller} != null ? 'Editar taller en español' : 'Agregar taller en español' )">Gestionar taller en español</title>
+</head>
+<body>
+<header th:replace="~{layout/plantilla :: header}"></header>
+<main class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6">
+            <h3 class="mb-4 text-center" th:text="${tallerEs.idTaller != null} ? 'Editar taller en español' : 'Agregar taller en español'">Gestionar taller en español</h3>
+            <form th:action="@{/administracion/gestionarTallerEs}" th:object="${tallerEs}" method="post" class="card p-4 shadow-sm">
+                <input type="hidden" th:field="*{idTaller}" />
+                <div class="mb-3">
+                    <label for="codigo" class="form-label">Código</label>
+                    <input type="text" id="codigo" th:field="*{codigo}" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" id="nombre" th:field="*{nombre}" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <textarea id="descripcion" th:field="*{descripcion}" class="form-control" rows="2" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="horario" class="form-label">Horario</label>
+                    <input type="text" id="horario" th:field="*{horario}" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="precio" class="form-label">Precio</label>
+                    <input type="number" id="precio" th:field="*{precio}" class="form-control" step="0.01" required>
+                </div>
+                <div class="mb-3">
+                    <label for="activo" class="form-label">Activo</label>
+                    <select id="activo" th:field="*{activo}" class="form-select">
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-secondary w-100 mb-2" th:text="${tallerEs.idTaller != null} ? 'Guardar cambios' : 'Agregar taller'">Guardar</button>
+                <a th:href="@{/administracion/listado}" class="btn btn-secondary w-100">Regresar</a>
+            </form>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{layout/plantilla :: footer}"></footer>
+</body>
+</html>

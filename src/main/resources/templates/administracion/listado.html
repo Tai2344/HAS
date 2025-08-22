@@ -1,82 +1,96 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head th:replace="~{layout/plantilla :: head}">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">    <head th:replace="~{layout/plantilla :: head}">
         <title th:inline="text">[[#{administracion.listado.titulo}]]</title>
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"></header>
-        <main class="container mt-5 text-center" th:inline="text">
-            <h2 class="text-center mb-4">[[#{administracion.listado.titulo}]]</h2>
+        <section class="container-fluid my-5" style="color: #5e7154;">
+            <div class="container mt-5" th:inline="text">
 
-            <!-- Lista de Usuarios -->
-            <h3 class="text-center mb-3">[[#{administracion.listado.usuariosregistrados}]]</h3>
-            <table class="table table-striped table-hover mx-auto" style="max-width: 90%;">
-                <thead class="table-success">
-                    <tr>
-                        <th class="text-center">[[#{administracion.listado.cedula}]]</th>
-                        <th class="text-center">[[#{administracion.listado.nombre}]]</th>
-                        <th class="text-center">[[#{administracion.listado.apellidos}]]</th>
-                        <th class="text-center">[[#{administracion.listado.telefono}]]</th>
-                        <th class="text-center">[[#{administracion.listado.padecimiento}]]</th>
-                        <th class="text-center">[[#{administracion.listado.rol}]]</th>
-                        <th class="text-center">[[#{administracion.listado.activo}]]</th>
-                        <th class="text-center">[[#{administracion.listado.acciones}]]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="usuario : ${usuarios}">
-                        <td th:text="${usuario.cedula}" class="align-middle"></td>
-                        <td th:text="${usuario.nombre}" class="align-middle"></td>
-                        <td th:text="${usuario.apellidos}" class="align-middle"></td>
-                        <td th:text="${usuario.telefono}" class="align-middle"></td>
-                        <td th:text="${usuario.padecimiento} ?: #{administracion.listado.padecimiento.noespecificado}" class="align-middle"></td>
-                        <td th:text="${usuario.rol.nombre}" class="align-middle"></td>
-                        <td th:text="${usuario.activo} ? #{administracion.listado.activo.si} : #{administracion.listado.activo.no}" class="align-middle"></td>
-                        <td class="align-middle">
-                            <a th:href="@{/administracion/editarUsuario/{id}(id=${usuario.idUsuario})}" class="btn btn-warning btn-sm">[[#{administracion.listado.editar}]]</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                <h2 class="text-center mb-4">[[#{administracion.listado.titulo}]]</h2>
 
-            <!-- Lista de Talleres -->
-            <h3 class="text-center mb-3 mt-5">[[#{administracion.listado.gestiontalleres}]]</h3>
-            <table class="table table-striped table-hover mx-auto" style="max-width: 90%;">
-                <thead class="table-success">
-                    <tr>
-                        <th class="text-center">[[#{administracion.listado.codigo}]]</th>
-                        <th class="text-center">[[#{administracion.listado.nombre}]]</th>
-                        <th class="text-center">[[#{administracion.listado.activo}]]</th>
-                        <th class="text-center">[[#{administracion.listado.acciones}]]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="taller : ${talleres}">
-                        <td th:text="${taller.codigo}" class="align-middle"></td>
-                        <td th:text="${taller.nombre}" class="align-middle"></td>
-                        <td th:text="${taller.activo} ? #{administracion.listado.activo.si} : #{administracion.listado.activo.no}" class="align-middle"></td>
-                        <td class="align-middle">
-                            <sec:authorize access="hasRole('ADMIN')">
-                                <a th:href="@{/administracion/desactivarTaller/{id}(id=${taller.idTaller})}"
-                                   th:if="${taller.activo}"
-                                   class="btn btn-danger btn-sm me-1">[[#{administracion.listado.desactivar}]]</a>
-                                <a th:href="@{/administracion/reactivarTaller/{id}(id=${taller.idTaller})}"
-                                   th:if="${!taller.activo}"
-                                   class="btn  btn-success btn-sm me-1"
-                                   th:title="#{administracion.listado.reactivar}">[[#{administracion.listado.reactivar}]]</a>
-                            </sec:authorize>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                <!-- Botón sobre tabla de usuarios -->
+                <div class="tabla-boton-superior mb-2">
+                    <a href="/administracion/reservas" class="btn btn-outline-secondary">[[#{administracion.listado.verreservasusuarios}]]</a>
+                </div>
+                <h3 class="text-center mb-3">[[#{administracion.listado.usuariosregistrados}]]</h3>
+                <div class="table-responsive mx-auto" style="max-width: 90%;">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-success">
+                            <tr>
+                                <th class="text-center" style="text-align: center;">[[#{administracion.listado.cedula}]]</th>
+                                <th class="text-center" style="text-align: center;">[[#{administracion.listado.nombre}]]</th>
+                                <th class="text-center" style="text-align: center;">[[#{administracion.listado.apellidos}]]</th>
+                                <th class="text-center" style="text-align: center;">[[#{administracion.listado.telefono}]]</th>
+                                <th class="text-center" style="text-align: center;">[[#{administracion.listado.padecimiento}]]</th>
+                                <th class="text-center" style="text-align: center;">[[#{administracion.listado.rol}]]</th>
+                                <th class="text-center" style="text-align: center;">[[#{administracion.listado.activo}]]</th>
+                                <th class="text-center" style="text-align: center;">[[#{administracion.listado.acciones}]]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="usuario : ${usuarios}">
+                                <td th:text="${usuario.cedula}" class="align-middle text-center"></td>
+                                <td th:text="${usuario.nombre}" class="align-middle text-center"></td>
+                                <td th:text="${usuario.apellidos}" class="align-middle text-center"></td>
+                                <td th:text="${usuario.telefono}" class="align-middle text-center"></td>
+                                <td th:text="${usuario.padecimiento} ?: #{administracion.listado.padecimiento.noespecificado}" class="align-middle text-center"></td>
+                                <td th:text="${usuario.rol.nombre}" class="align-middle text-center"></td>
+                                <td th:text="${usuario.activo} ? #{administracion.listado.activo.si} : #{administracion.listado.activo.no}" class="align-middle text-center"></td>
+                                <td class="align-middle text-center">
+                                    <a th:href="@{/administracion/editarUsuario/{id}(id=${usuario.idUsuario})}" class="btn btn-warning btn-sm">[[#{administracion.listado.editar}]]</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-            <!-- Boton para Ver Reservas -->
-            <div class="text-center mt-4">
-                <sec:authorize access="hasRole('ADMIN')">
-                    <a href="/administracion/reservas" class="btn  btn-outline-secondary">[[#{administracion.listado.verreservasusuarios}]]</a>
-                </sec:authorize>
+                <h3 class="text-center mb-3 mt-5">[[#{administracion.listado.gestiontalleres}]]</h3>
+                <div class="table-responsive mx-auto" style="max-width: 90%;">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-success">
+                            <tr>
+                                <th class="text-center" style="text-align: center;">[[#{administracion.listado.codigo}]]</th>
+                                <th class="text-center" style="text-align: center;">[[#{administracion.listado.nombre}]]</th>
+                                <th class="text-center" style="text-align: center;">[[#{administracion.listado.activo}]]</th>
+                                <th class="text-center" style="text-align: center;">[[#{administracion.listado.acciones}]]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="taller : ${talleresEs}">
+                                <td th:text="${taller.codigo}" class="align-middle text-center"></td>
+                                <td th:text="${taller.nombre}" class="align-middle text-center"></td>
+                                <td th:text="${taller.activo} ? 'Sí' : 'No'" class="align-middle text-center"></td>
+                                <td class="align-middle text-center">
+                                    <a th:href="@{/administracion/gestionarTallerEs(id=${taller.idTaller})}" class="btn btn-secondary btn-sm me-1">Editar</a>
+                                    <a th:if="${taller.activo}" th:href="@{/administracion/desactivarTallerEs/{id}(id=${taller.idTaller})}" class="btn btn-warning btn-sm me-1">Desactivar</a>
+                                    <a th:if="${!taller.activo}" th:href="@{/administracion/reactivarTallerEs/{id}(id=${taller.idTaller})}" class="btn btn-success btn-sm me-1">Activar</a>
+                                    <a th:href="@{/administracion/eliminarTallerEs/{id}(id=${taller.idTaller})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro que deseas eliminar este taller?');">Eliminar</a>
+                                </td>
+                            </tr>
+                            <tr th:each="taller : ${talleresEn}">
+                                <td th:text="${taller.codigo}" class="align-middle text-center"></td>
+                                <td th:text="${taller.nombre}" class="align-middle text-center"></td>
+                                <td th:text="${taller.activo} ? 'Sí' : 'No'" class="align-middle text-center"></td>
+                                <td class="align-middle text-center">
+                                    <a th:href="@{/administracion/gestionarTallerEn(id=${taller.idTaller})}" class="btn btn-secondary btn-sm me-1">Editar</a>
+                                    <a th:if="${taller.activo}" th:href="@{/administracion/desactivarTallerEn/{id}(id=${taller.idTaller})}" class="btn btn-warning btn-sm me-1">Desactivar</a>
+                                    <a th:if="${!taller.activo}" th:href="@{/administracion/reactivarTallerEn/{id}(id=${taller.idTaller})}" class="btn btn-success btn-sm me-1">Activar</a>
+                                    <a th:href="@{/administracion/eliminarTallerEn/{id}(id=${taller.idTaller})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this workshop?');">Eliminar</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </main>
+            <!-- Botones abajo de la tabla de talleres -->
+            <div class="botones-talleres-final mb-5">
+                <a th:href="@{/administracion/gestionarTallerEs}" class="btn btn-secondary me-2">Añadir taller en español</a>
+                <a th:href="@{/administracion/gestionarTallerEn}" class="btn btn-secondary">Add workshop in English</a>
+            </div>
+        </section>
         <footer th:replace="~{layout/plantilla :: footer}"></footer>
     </body>
 </html>

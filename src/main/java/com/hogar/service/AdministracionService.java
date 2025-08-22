@@ -2,10 +2,12 @@ package com.hogar.service;
 
 import com.hogar.domain.ReservaTaller;
 import com.hogar.domain.Usuario;
-import com.hogar.domain.Taller;
+import com.hogar.domain.TallerEn;
+import com.hogar.domain.TallerEs;
 import com.hogar.repository.UsuarioRepository;
-import com.hogar.repository.TallerRepository;
 import com.hogar.repository.ReservaTallerRepository;
+import com.hogar.repository.TallerEnRepository;
+import com.hogar.repository.TallerEsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,15 +20,21 @@ import java.util.Optional;
 public class AdministracionService {
 
     private final UsuarioRepository usuarioRepository;
-    private final TallerRepository tallerRepository;
+    private final TallerEsRepository tallerEsRepository;
+    private final TallerEnRepository tallerEnRepository;
     private final ReservaTallerRepository reservaTallerRepository;
 
     public List<Usuario> listarUsuarios() {
         return usuarioRepository.findAll();
     }
 
-    public List<Taller> listarTalleres() {
-        return tallerRepository.findAll();
+    public List<TallerEs> listarTalleresEs() {
+        return tallerEsRepository.findAll();
+    }
+
+    public List<TallerEn> listarTalleresEn() {
+        return tallerEnRepository.findAll();
+
     }
 
     public Optional<Usuario> encontrarUsuarioPorId(Integer id) {

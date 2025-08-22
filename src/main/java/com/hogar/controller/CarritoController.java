@@ -21,8 +21,7 @@ public class CarritoController {
                           @ModelAttribute("tipoMensaje") String tipoMensaje) {
         var items = carritoService.getItems();
         double total = carritoService.calcularTotal(items);
-
-        double tCambio = 505; // o bien leerlo con @Value("${tCambio}")
+        double tCambio = 505; // aquí podrías usar @Value desde application.properties
         double totalUSD = total / tCambio;
 
         model.addAttribute("items", items);
@@ -34,18 +33,23 @@ public class CarritoController {
             model.addAttribute("tipoMensaje", tipoMensaje);
         }
 
+        // Internacionalización para título de la página
+        model.addAttribute("tituloListado", "#{carritocontrol.tituloListado}");
+
         return "carrito/listado";
     }
 
-    @GetMapping("/agregar/{idTaller}")
-    public String agregar(@PathVariable Integer idTaller, RedirectAttributes redirectAttrs) {
-        boolean agregado = carritoService.agregarTaller(idTaller);
+    @GetMapping("/agregar/{idTaller}/{idioma}")
+    public String agregar(@PathVariable Integer idTaller,
+                          @PathVariable String idioma,
+                          RedirectAttributes redirectAttrs) {
+        boolean agregado = carritoService.agregarTaller(idTaller, idioma);
 
         if (agregado) {
-            redirectAttrs.addFlashAttribute("mensaje", "El taller se ha reservado con éxito.");
+            redirectAttrs.addFlashAttribute("mensaje", "#{carritocontrol.agregar.exito}");
             redirectAttrs.addFlashAttribute("tipoMensaje", "success");
         } else {
-            redirectAttrs.addFlashAttribute("mensaje", "El taller ya fue reservado, solo puede reservarse 1 cupo por persona.");
+            redirectAttrs.addFlashAttribute("mensaje", "#{carritocontrol.agregar.yareservado}");
             redirectAttrs.addFlashAttribute("tipoMensaje", "danger");
         }
 
@@ -55,7 +59,7 @@ public class CarritoController {
     @GetMapping("/quitar/{idItem}")
     public String quitar(@PathVariable Integer idItem, RedirectAttributes redirectAttrs) {
         carritoService.quitarItem(idItem);
-        redirectAttrs.addFlashAttribute("mensaje", "El taller fue eliminado del carrito.");
+        redirectAttrs.addFlashAttribute("mensaje", "#{carritocontrol.quitar.exito}");
         redirectAttrs.addFlashAttribute("tipoMensaje", "warning");
         return "redirect:/carrito/listado";
     }
@@ -64,11 +68,10 @@ public class CarritoController {
     public String facturar(RedirectAttributes redirectAttrs) {
         FacturaTaller factura = carritoService.facturar();
         if (factura != null) {
-            // Simulación de confirmación de PayPal (reemplazar con integración real)
-            redirectAttrs.addFlashAttribute("mensaje", "Pago realizado con éxito.");
+            redirectAttrs.addFlashAttribute("mensaje", "#{carritocontrol.facturar.exito}");
             redirectAttrs.addFlashAttribute("tipoMensaje", "success");
         } else {
-            redirectAttrs.addFlashAttribute("mensaje", "Error al procesar el pago.");
+            redirectAttrs.addFlashAttribute("mensaje", "#{carritocontrol.facturar.error}");
             redirectAttrs.addFlashAttribute("tipoMensaje", "danger");
         }
         return "redirect:/carrito/listado";

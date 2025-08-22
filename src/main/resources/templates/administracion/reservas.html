@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">    
     <head th:replace="~{layout/plantilla :: head}">
         <title th:inline="text">[[#{administracion.reservas.titulo}]]</title>
     </head>
@@ -7,6 +9,13 @@
         <header th:replace="~{layout/plantilla :: header}"></header>
         <main class="container mt-5 text-center" th:inline="text">
             <h2 class="text-center mb-4">[[#{administracion.reservas.titulo}]]</h2>
+
+            <!-- BOTÓN BIEN CENTRADO Y NORMAL -->
+            <div class="text-center mb-2">
+                <a href="/taller/listado" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> [[#{administracion.reservas.regresar}]]
+                </a>
+            </div>
 
             <table class="table table-striped table-hover mx-auto" style="max-width: 90%;">
                 <thead class="table-success">
@@ -19,18 +28,15 @@
                 <tbody>
                     <tr th:each="reserva : ${reservas}">
                         <td th:text="${reserva.usuario.cedula} + ' - ' + ${reserva.usuario.nombre} + ' ' + ${reserva.usuario.apellidos}" class="align-middle"></td>
-                        <td th:text="${reserva.taller.nombre}" class="align-middle"></td>
+                        <td class="align-middle">
+                            <span th:text="${reserva.tallerEs != null ? reserva.tallerEs.nombre : ''}"></span>
+                            <span th:if="${reserva.tallerEn != null}"> / </span>
+                            <span th:text="${reserva.tallerEn != null ? reserva.tallerEn.nombre : ''}"></span>
+                        </td>
                         <td th:text="${#temporals.format(reserva.fechaProgramada, 'dd/MM/yyyy')}" class="align-middle"></td>
                     </tr>
                 </tbody>
             </table>
-
-            <div class="mx-auto text-end mt-2" style="max-width: 90%;">
-                <a href="/administracion/listado" class="btn btn-outline-secondary">
-                    <i class="fas fa-arrow-left"></i> [[#{administracion.reservas.regresar}]]
-                </a>
-            </div>
-
         </main>
         <footer th:replace="~{layout/plantilla :: footer}"></footer>
     </body>

@@ -2,59 +2,62 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-<head th:replace="~{layout/plantilla :: head}"></head>
-<script src="/js/rutinas.js"></script>
-<body>
-<header th:replace="~{layout/plantilla :: header}"></header>
+    <head th:replace="~{layout/plantilla :: head}"></head>
+    <script src="/js/rutinas.js"></script>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"></header>
 
-<section class="container mt-5" th:inline="text">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="mb-0">[[#{reservas.titulo}]]</h2>
-        <a href="/taller/listado" class="btn btn-outline-secondary">
-            <i class="fas fa-arrow-left"></i> [[#{reservas.volveratalleres}]]
-        </a>
-    </div>
-
-    <ul class="list-group mb-3" th:if="${!#lists.isEmpty(reservas)}">
-        <!-- Encabezado -->
-        <li class="list-group-item d-flex fw-bold text-center align-items-center">
-            <div class="col-1">[[#{reservas.encabezado.tallerid}]]</div>
-            <div class="col-2">[[#{reservas.encabezado.descripcion}]]</div>
-            <div class="col-2">[[#{reservas.encabezado.precio}]]</div>
-            <div class="col-2">[[#{reservas.encabezado.idparticipacion}]]</div>
-            <div class="col-2">[[#{reservas.encabezado.dia}]]</div>
-            <div class="col-3">[[#{reservas.encabezado.hora}]]</div>
-        </li>
-
-        <!-- Filas -->
-        <li class="list-group-item d-flex text-center align-items-center" th:each="r : ${reservas}">
-            <div class="col-1" th:text="${r.taller.idTaller}">1</div>
-            <div class="col-2" th:text="${r.nombreTaller}">[[#{reservas.encabezado.descripcion}]]</div>
-            <div class="col-2">
-                ₡ <span th:text="${#numbers.formatDecimal(r.precio, 0, 'COMMA', 2, 'POINT')}">0.00</span>
+        <section class="container mt-5" th:inline="text">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                 <div class="container mt-5" th:inline="text">
+                <h2 class="mb-0">[[#{reservas.titulo}]]</h2>
+                <a href="/taller/listado" class="btn btn-outline-secondary">
+                    <div class="container mt-5" th:inline="text">
+                        <i class="fas fa-arrow-left"></i> [[#{reservas.volveratalleres}]]
+                    </div>
+                </a>
+                 </div>
             </div>
-            <div class="col-2" th:text="${r.codigoParticipacion}">[[#{reservas.participacion.ejemplo}]]</div>
-            <div class="col-2"
-                 th:attr="data-dia=${#strings.substring(r.horario, 0, #strings.indexOf(r.horario, ','))}"
-                 th:text="${#strings.substring(r.horario, 0, #strings.indexOf(r.horario, ','))}">
-                [[#{reservas.dia.ejemplo}]]
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center" style="text-align: center;">[[#{reservas.encabezado.tallerid}]]</th>
+                        <th class="text-center" style="text-align: center;">[[#{reservas.encabezado.descripcion}]]</th>
+                        <th class="text-center" style="text-align: center;">[[#{reservas.encabezado.precio}]]</th>
+                        <th class="text-center" style="text-align: center;">[[#{reservas.encabezado.idparticipacion}]]</th>
+                        <th class="text-center" style="text-align: center;">[[#{reservas.encabezado.dia}]]</th>
+                        <th class="text-center" style="text-align: center;">[[#{reservas.encabezado.hora}]]</th>
+                    </tr>
+                </thead>
+                <tbody th:if="${!#lists.isEmpty(reservas)}">
+                    <tr th:each="r : ${reservas}">
+                        <td class="text-center" style="text-align: center;" th:text="${r.tallerEs?.idTaller} + ' - ' + ${r.tallerEn?.idTaller}"></td>
+                        <td class="text-center" style="text-align: center;" th:text="${r.nombreTaller}"></td>
+                        <td class="text-center" style="text-align: center;">
+                            ₡ <span th:text="${#numbers.formatDecimal(r.precio, 0, 'COMMA', 2, 'POINT')}">0.00</span>
+                        </td>
+                        <td class="text-center" style="text-align: center;" th:text="${r.codigoParticipacion}"></td>
+                        <td class="text-center" style="text-align: center;"
+                            th:attr="data-dia=${#strings.substring(r.horario, 0, #strings.indexOf(r.horario, ','))}"
+                            th:text="${#strings.substring(r.horario, 0, #strings.indexOf(r.horario, ','))}">
+                        </td>
+                        <td class="text-center text-nowrap" style="text-align: center;"
+                            th:text="${#strings.trim(#strings.substring(r.horario, #strings.indexOf(r.horario, ',') + 1))}">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div th:if="${#lists.isEmpty(reservas)}" class="alert alert-warning" role="alert">
+                [[#{reservas.vacio}]]
             </div>
-            <div class="col-3 text-nowrap"
-                 th:text="${#strings.trim(#strings.substring(r.horario, #strings.indexOf(r.horario, ',') + 1))}">
-                [[#{reservas.hora.ejemplo}]]
-            </div>
-        </li>
-    </ul>
 
-    <div th:if="${#lists.isEmpty(reservas)}" class="alert alert-warning" role="alert">
-        [[#{reservas.vacio}]]
-    </div>
+            <p class="text-muted small mt-3">
+                [[#{reservas.nota}]]
+            </p>
+        </section>
 
-    <p class="text-muted small mt-3">
-        [[#{reservas.nota}]]
-    </p>
-</section>
-
-<footer th:replace="~{layout/plantilla :: footer}"></footer>
-</body>
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
 </html>

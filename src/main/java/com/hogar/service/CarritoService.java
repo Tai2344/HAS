@@ -4,13 +4,15 @@ import com.hogar.domain.Carrito;
 import com.hogar.domain.CarritoItem;
 import com.hogar.domain.FacturaTaller;
 import com.hogar.domain.ReservaTaller;
-import com.hogar.domain.Taller;
+import com.hogar.domain.TallerEn;
+import com.hogar.domain.TallerEs;
 import com.hogar.domain.Usuario;
 import com.hogar.repository.CarritoItemRepository;
 import com.hogar.repository.CarritoRepository;
 import com.hogar.repository.FacturaTallerRepository;
 import com.hogar.repository.ReservaTallerRepository;
-import com.hogar.repository.TallerRepository;
+import com.hogar.repository.TallerEnRepository;
+import com.hogar.repository.TallerEsRepository;
 import com.hogar.repository.UsuarioRepository;
 import java.security.SecureRandom;
 import java.time.DayOfWeek;
@@ -30,7 +32,8 @@ public class CarritoService {
     private final CarritoRepository carritoRepository;
     private final CarritoItemRepository carritoItemRepository;
     private final UsuarioRepository usuarioRepository;
-    private final TallerRepository tallerRepository;
+    private final TallerEsRepository tallerEsRepository;
+    private final TallerEnRepository tallerEnRepository;
     private final FacturaTallerRepository facturaTallerRepository;
     private final ReservaTallerRepository reservaTallerRepository;
 
@@ -46,21 +49,41 @@ public class CarritoService {
                 });
     }
 
-    public boolean agregarTaller(Integer idTaller) {
+    public boolean agregarTaller(Integer idTaller, String idioma) {
         Carrito carrito = getCarritoUsuario();
 
-        if (reservaTallerRepository.existsByUsuarioIdUsuarioAndTallerIdTaller(carrito.getUsuario().getIdUsuario(), idTaller)) {
-            return false;
+        if (idioma.equalsIgnoreCase("es")) {
+            TallerEs taller = tallerEsRepository.findById(idTaller).orElseThrow();
+
+            // CORREGIDO: primero idUsuario, luego idTallerEs
+            if (reservaTallerRepository.existsByUsuario_IdUsuarioAndTallerEs_IdTaller(carrito.getUsuario().getIdUsuario(), idTaller)) {
+                return false;
+            }
+
+            if (!carritoItemRepository.existsByCarrito_IdCarritoAndTallerEs_IdTaller(carrito.getIdCarrito(), idTaller)) {
+                CarritoItem item = new CarritoItem();
+                item.setCarrito(carrito);
+                item.setTallerEs(taller);
+                item.setCantidad(1);
+                carritoItemRepository.save(item);
+            }
+        } else {
+            TallerEn taller = tallerEnRepository.findById(idTaller).orElseThrow();
+
+            // CORREGIDO: primero idUsuario, luego idTallerEn
+            if (reservaTallerRepository.existsByUsuario_IdUsuarioAndTallerEn_IdTaller(carrito.getUsuario().getIdUsuario(), idTaller)) {
+                return false;
+            }
+
+            if (!carritoItemRepository.existsByCarrito_IdCarritoAndTallerEn_IdTaller(carrito.getIdCarrito(), idTaller)) {
+                CarritoItem item = new CarritoItem();
+                item.setCarrito(carrito);
+                item.setTallerEn(taller);
+                item.setCantidad(1);
+                carritoItemRepository.save(item);
+            }
         }
 
-        if (!carritoItemRepository.existsByCarrito_IdCarritoAndTaller_IdTaller(carrito.getIdCarrito(), idTaller)) {
-            Taller taller = tallerRepository.findById(idTaller).orElseThrow();
-            CarritoItem item = new CarritoItem();
-            item.setCarrito(carrito);
-            item.setTaller(taller);
-            item.setCantidad(1);
-            carritoItemRepository.save(item);
-        }
         return true;
     }
 
@@ -94,8 +117,14 @@ public class CarritoService {
         return base.plusDays(diff);
     }
 
-    public double calcularTotal(List<CarritoItem> items) { // Cambiado a public
-        return items.stream().mapToDouble(item -> item.getTaller().getPrecio() * item.getCantidad()).sum();
+    public double calcularTotal(List<CarritoItem> items) {
+        return items.stream().mapToDouble(item -> {
+            if (item.getTallerEs() != null) {
+                return item.getTallerEs().getPrecio() * item.getCantidad();
+            } else {
+                return item.getTallerEn().getPrecio() * item.getCantidad();
+            }
+        }).sum();
     }
 
     private String generarCodigoParticipacion(String nombreTaller) {
@@ -108,9 +137,11 @@ public class CarritoService {
         Carrito carrito = getCarritoUsuario();
         List<CarritoItem> items = carritoItemRepository.findByCarrito_IdCarrito(carrito.getIdCarrito());
         double total = calcularTotal(items);
+
         if (items.isEmpty()) {
             return null;
         }
+
         FacturaTaller factura = FacturaTaller.builder()
                 .idUsuario(carrito.getUsuario().getIdUsuario())
                 .fecha(LocalDateTime.now())
@@ -121,16 +152,28 @@ public class CarritoService {
         facturaTallerRepository.save(factura);
 
         for (CarritoItem item : items) {
-            LocalDate fecha = calcularProximaFecha(item.getTaller().getHorario());
+            LocalDate fecha;
             ReservaTaller rt = new ReservaTaller();
             rt.setUsuario(carrito.getUsuario());
-            rt.setTaller(item.getTaller());
             rt.setFacturaTaller(factura);
-            rt.setNombreTaller(item.getTaller().getNombre());
-            rt.setHorario(item.getTaller().getHorario());
-            rt.setPrecio(item.getTaller().getPrecio());
             rt.setCantidad(item.getCantidad());
-            rt.setCodigoParticipacion(generarCodigoParticipacion(item.getTaller().getNombre()));
+
+            if (item.getTallerEs() != null) {
+                fecha = calcularProximaFecha(item.getTallerEs().getHorario());
+                rt.setTallerEs(item.getTallerEs());
+                rt.setNombreTaller(item.getTallerEs().getNombre());
+                rt.setHorario(item.getTallerEs().getHorario());
+                rt.setPrecio(item.getTallerEs().getPrecio());
+                rt.setCodigoParticipacion(generarCodigoParticipacion(item.getTallerEs().getNombre()));
+            } else {
+                fecha = calcularProximaFecha(item.getTallerEn().getHorario());
+                rt.setTallerEn(item.getTallerEn());
+                rt.setNombreTaller(item.getTallerEn().getNombre());
+                rt.setHorario(item.getTallerEn().getHorario());
+                rt.setPrecio(item.getTallerEn().getPrecio());
+                rt.setCodigoParticipacion(generarCodigoParticipacion(item.getTallerEn().getNombre()));
+            }
+
             rt.setFechaProgramada(fecha);
             reservaTallerRepository.save(rt);
         }
@@ -138,4 +181,4 @@ public class CarritoService {
         carritoItemRepository.deleteAll(items);
         return factura;
     }
-} 
+}

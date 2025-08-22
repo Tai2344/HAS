@@ -8,37 +8,38 @@
 
         <!-- Servicios -->
         <section class="container-fluid my-5" style="color: #5e7154;">
-            <h1 class="text-center servicios-title">[[#{menu.titulo}]]</h1>
-            <div class="servicios-menu">
-                <div class="servicio-item">
-                    <i class="fa-brands fa-accessible-icon"></i>
-                    <span>[[#{menu.accesibilidad}]]</span>
+            <div class="container mt-5" th:inline="text">
+                <h1 class="text-center servicios-title">[[#{menu.titulo}]]</h1>
+                <div class="servicios-menu">
+                    <div class="servicio-item">
+                        <i class="fa-brands fa-accessible-icon"></i>
+                        <span>[[#{menu.accesibilidad}]]</span>
+                    </div>
+                    <div class="servicio-item">
+                        <i class="fa-solid fa-person-walking"></i>
+                        <span>[[#{menu.actividades}]]</span>
+                    </div>
+                    <div class="servicio-item">
+                        <i class="fa-solid fa-bed"></i>
+                        <span>[[#{menu.alojamiento}]]</span>
+                    </div>
+                    <div class="servicio-item">
+                        <i class="fa-solid fa-utensils"></i>
+                        <span>[[#{menu.alimentacion}]]</span>
+                    </div>
+                    <div class="servicio-item">
+                        <i class="fa-solid fa-suitcase-medical"></i>
+                        <span>[[#{menu.medica}]]</span>
+                    </div>
+                    <div class="servicio-item">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>[[#{menu.estimulacion}]]</span>
+                    </div>
+                    <div class="servicio-item">
+                        <i class="fa-solid fa-pump-soap"></i>
+                        <span>[[#{menu.limpieza}]]</span>
+                    </div>
                 </div>
-                <div class="servicio-item">
-                    <i class="fa-solid fa-person-walking"></i>
-                    <span>[[#{menu.actividades}]]</span>
-                </div>
-                <div class="servicio-item">
-                    <i class="fa-solid fa-bed"></i>
-                    <span>[[#{menu.alojamiento}]]</span>
-                </div>
-                <div class="servicio-item">
-                    <i class="fa-solid fa-utensils"></i>
-                    <span>[[#{menu.alimentacion}]]</span>
-                </div>
-                <div class="servicio-item">
-                    <i class="fa-solid fa-suitcase-medical"></i>
-                    <span>[[#{menu.medica}]]</span>
-                </div>
-                <div class="servicio-item">
-                    <i class="fa-solid fa-brain"></i>
-                    <span>[[#{menu.estimulacion}]]</span>
-                </div>
-                <div class="servicio-item">
-                    <i class="fa-solid fa-pump-soap"></i>
-                    <span>[[#{menu.limpieza}]]</span>
-                </div>
-            </div>
         </section>
 
         <!-- Testimonios -->
@@ -128,7 +129,6 @@
                 </div>
             </div>
         </div>
-
         <div th:replace="layout/plantilla :: footer"></div>
     </body>
 </html>
