@@ -33,7 +33,7 @@ public class ReservaController {
         usuario.setAgendoCita(true); 
         usuarioRepository.save(usuario);
 
-        model.addAttribute("mensajeExito", "#{reservacontrol.mensajeExito}");
+        model.addAttribute("mensajeExito", "reservacontrol.mensajeExito");
         return "hogar/galeria"; 
     }
 }

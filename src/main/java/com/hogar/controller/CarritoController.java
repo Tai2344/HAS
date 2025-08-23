@@ -3,10 +3,13 @@ package com.hogar.controller;
 import com.hogar.domain.FacturaTaller;
 import com.hogar.service.CarritoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Locale;
 
 @Controller
 @RequestMapping("/carrito")
@@ -14,11 +17,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CarritoController {
 
     private final CarritoService carritoService;
+    private final MessageSource messageSource;
 
     @GetMapping("/listado")
     public String listado(Model model,
                           @ModelAttribute("mensaje") String mensaje,
-                          @ModelAttribute("tipoMensaje") String tipoMensaje) {
+                          @ModelAttribute("tipoMensaje") String tipoMensaje,
+                          Locale locale) {
         var items = carritoService.getItems();
         double total = carritoService.calcularTotal(items);
         double tCambio = 505; // aquí podrías usar @Value desde application.properties
@@ -29,12 +34,13 @@ public class CarritoController {
         model.addAttribute("totalUSD", totalUSD);
 
         if (mensaje != null && !mensaje.isEmpty()) {
+            // el flash ya dejó el mensaje resuelto en el controlador; lo dejamos para la vista
             model.addAttribute("mensaje", mensaje);
             model.addAttribute("tipoMensaje", tipoMensaje);
         }
 
-        // Internacionalización para título de la página
-        model.addAttribute("tituloListado", "#{carritocontrol.tituloListado}");
+        // resolver el título aquí con MessageSource para internacionalización
+        model.addAttribute("tituloListado", messageSource.getMessage("carritocontrol.tituloListado", null, locale));
 
         return "carrito/listado";
     }
@@ -42,14 +48,17 @@ public class CarritoController {
     @GetMapping("/agregar/{idTaller}/{idioma}")
     public String agregar(@PathVariable Integer idTaller,
                           @PathVariable String idioma,
-                          RedirectAttributes redirectAttrs) {
+                          RedirectAttributes redirectAttrs,
+                          Locale locale) {
         boolean agregado = carritoService.agregarTaller(idTaller, idioma);
 
         if (agregado) {
-            redirectAttrs.addFlashAttribute("mensaje", "#{carritocontrol.agregar.exito}");
+            String texto = messageSource.getMessage("carritocontrol.agregar.exito", null, locale);
+            redirectAttrs.addFlashAttribute("mensaje", texto);
             redirectAttrs.addFlashAttribute("tipoMensaje", "success");
         } else {
-            redirectAttrs.addFlashAttribute("mensaje", "#{carritocontrol.agregar.yareservado}");
+            String texto = messageSource.getMessage("carritocontrol.agregar.yareservado", null, locale);
+            redirectAttrs.addFlashAttribute("mensaje", texto);
             redirectAttrs.addFlashAttribute("tipoMensaje", "danger");
         }
 
@@ -57,21 +66,24 @@ public class CarritoController {
     }
 
     @GetMapping("/quitar/{idItem}")
-    public String quitar(@PathVariable Integer idItem, RedirectAttributes redirectAttrs) {
+    public String quitar(@PathVariable Integer idItem, RedirectAttributes redirectAttrs, Locale locale) {
         carritoService.quitarItem(idItem);
-        redirectAttrs.addFlashAttribute("mensaje", "#{carritocontrol.quitar.exito}");
+        String texto = messageSource.getMessage("carritocontrol.quitar.exito", null, locale);
+        redirectAttrs.addFlashAttribute("mensaje", texto);
         redirectAttrs.addFlashAttribute("tipoMensaje", "warning");
         return "redirect:/carrito/listado";
     }
 
     @GetMapping("/facturar")
-    public String facturar(RedirectAttributes redirectAttrs) {
+    public String facturar(RedirectAttributes redirectAttrs, Locale locale) {
         FacturaTaller factura = carritoService.facturar();
         if (factura != null) {
-            redirectAttrs.addFlashAttribute("mensaje", "#{carritocontrol.facturar.exito}");
+            String texto = messageSource.getMessage("carritocontrol.facturar.exito", null, locale);
+            redirectAttrs.addFlashAttribute("mensaje", texto);
             redirectAttrs.addFlashAttribute("tipoMensaje", "success");
         } else {
-            redirectAttrs.addFlashAttribute("mensaje", "#{carritocontrol.facturar.error}");
+            String texto = messageSource.getMessage("carritocontrol.facturar.error", null, locale);
+            redirectAttrs.addFlashAttribute("mensaje", texto);
             redirectAttrs.addFlashAttribute("tipoMensaje", "danger");
         }
         return "redirect:/carrito/listado";

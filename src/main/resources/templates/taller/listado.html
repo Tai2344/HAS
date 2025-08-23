@@ -5,19 +5,16 @@
     <head th:replace="~{layout/plantilla :: head}"></head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"></header>
-
         <section class="container-fluid my-5" style="color: #5e7154;">
             <div class="container mt-5" th:inline="text">
                 <div class="content-wrapper mx-auto">
                     <div class="row align-items-center mb-2">
                         <div class="col-4"></div>
-
                         <div class="col-4 text-center">
                             <div class="container mt-5" th:inline="text">
                                 <h2 class="mb-3">[[#{taller.listado.titulo}]]</h2>
                             </div>
                         </div>
-
                         <div class="col-4 text-end">
                             <a href="/carrito/listado" class="btn btn-primary me-2">
                                 <i class="fas fa-shopping-cart"></i> [[#{taller.vercarrito}]]
@@ -26,14 +23,12 @@
                                 <i class="fas fa-calendar-check"></i> [[#{taller.vertalleresreservados}]]
                             </a>
                         </div>
-
                         <div th:if="${mensaje}" class="alert alert-" th:classappend="${tipoMensaje}" role="alert">
                             <span th:text="${mensaje}"></span>
                         </div>
 
                         <!-- ===== Talleres en español ===== -->
                         <h4 class="mt-4">Talleres en español</h4>
-
                         <!-- Grid: 3 mini-cards por fila en pantallas md+ -->
                         <div class="row g-4 mt-2">
                             <div class="col-md-4 col-sm-6 col-12" th:each="taller : ${talleresEs}">
@@ -43,16 +38,32 @@
                                             <div class="taller-icon me-3">
                                                 <i class="fa-2x fas fa-tools"></i>
                                             </div>
-
                                             <div class="flex-grow-1">
                                                 <h5 class="taller-title" th:text="${taller.nombre}">Nombre taller</h5>
                                                 <p class="taller-desc" th:text="${taller.descripcion}">Descripción breve</p>
-
                                                 <p class="text-muted small mb-2">
                                                     <i class="fas fa-clock"></i>
-                                                    <span th:text="${taller.horario}">Horario</span>
+                                                    <!-- Mostrar el "día" tal como viene: preferimos primer token separado por espacio, si no existe se intenta coma, si no se muestra todo -->
+                                                    <span
+                                                        th:text="${taller.horario != null
+                                                            ? (taller.horario.contains(' ')
+                                                                ? #strings.substringBefore(taller.horario, ' ')
+                                                                : (taller.horario.contains(',')
+                                                                    ? #strings.substringBefore(taller.horario, ',')
+                                                                    : #strings.trim(taller.horario)))
+                                                            : ''}">
+                                                    </span>
+                                                    <!-- Mostrar la parte restante (hora/detalle) después del separador -->
+                                                    <span
+                                                        th:text="${taller.horario != null
+                                                            ? (taller.horario.contains(' ')
+                                                                ? #strings.substringAfter(taller.horario, ' ').trim()
+                                                                : (taller.horario.contains(',')
+                                                                    ? #strings.substringAfter(taller.horario, ',').trim()
+                                                                    : ''))
+                                                            : ''}">
+                                                    </span>
                                                 </p>
-
                                                 <div class="d-flex justify-content-between align-items-center mt-3">
                                                     <div>
                                                         <div class="fw-bold small">
@@ -62,7 +73,6 @@
                                                             $ <span th:text="${#numbers.formatDecimal(taller.precio / (tCambio != null ? tCambio : 505), 0, 'COMMA', 2, 'POINT')}">0.00</span>
                                                         </div>
                                                     </div>
-
                                                     <div>
                                                         <a th:href="@{'/carrito/agregar/' + ${taller.idTaller} + '/es'}"
                                                            class="btn btn-success btn-reservar" th:unless="${!taller.activo}">Reservar</a>
@@ -76,8 +86,7 @@
                         </div>
 
                         <!-- ===== Talleres en inglés ===== -->
-                        <b><h4 class="mt-5">Workshops in english</h4></b>
-
+                        <h4 class="mt-5">Workshops in english</h4>
                         <div class="row g-4 mt-2">
                             <div class="col-md-4 col-sm-6 col-12" th:each="taller : ${talleresEn}">
                                 <div class="card h-100 shadow-sm">
@@ -86,16 +95,30 @@
                                             <div class="taller-icon me-3">
                                                 <i class="fa-2x fas fa-tools"></i>
                                             </div>
-
                                             <div class="flex-grow-1">
                                                 <h5 class="taller-title" th:text="${taller.nombre}">Nombre taller</h5>
                                                 <p class="taller-desc" th:text="${taller.descripcion}">Descripción breve</p>
-
                                                 <p class="text-muted small mb-2">
                                                     <i class="fas fa-clock"></i>
-                                                    <span th:text="${taller.horario}">Horario</span>
+                                                    <span
+                                                        th:text="${taller.horario != null
+                                                            ? (taller.horario.contains(' ')
+                                                                ? #strings.substringBefore(taller.horario, ' ')
+                                                                : (taller.horario.contains(',')
+                                                                    ? #strings.substringBefore(taller.horario, ',')
+                                                                    : #strings.trim(taller.horario)))
+                                                            : ''}">
+                                                    </span>
+                                                    <span
+                                                        th:text="${taller.horario != null
+                                                            ? (taller.horario.contains(' ')
+                                                                ? #strings.substringAfter(taller.horario, ' ').trim()
+                                                                : (taller.horario.contains(',')
+                                                                    ? #strings.substringAfter(taller.horario, ',').trim()
+                                                                    : ''))
+                                                            : ''}">
+                                                    </span>
                                                 </p>
-
                                                 <div class="d-flex justify-content-between align-items-center mt-3">
                                                     <div>
                                                         <div class="fw-bold small">
@@ -105,22 +128,21 @@
                                                             $ <span th:text="${#numbers.formatDecimal(taller.precio / (tCambio != null ? tCambio : 505), 0, 'COMMA', 2, 'POINT')}">0.00</span>
                                                         </div>
                                                     </div>
-
                                                     <div>
                                                         <a th:href="@{'/carrito/agregar/' + ${taller.idTaller} + '/en'}"
                                                            class="btn btn-success btn-reservar" th:unless="${!taller.activo}">Reserve</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div> 
+
+                    </div>
                 </div>
         </section>
-
         <footer th:replace="~{layout/plantilla :: footer}"></footer>
     </body>
 </html>

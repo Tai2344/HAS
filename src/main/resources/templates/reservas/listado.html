@@ -3,20 +3,19 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}"></head>
-    <script src="/js/rutinas.js"></script>
     <body>
         <header th:replace="~{layout/plantilla :: header}"></header>
 
         <section class="container mt-5" th:inline="text">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                 <div class="container mt-5" th:inline="text">
-                <h2 class="mb-0">[[#{reservas.titulo}]]</h2>
-                <a href="/taller/listado" class="btn btn-outline-secondary">
-                    <div class="container mt-5" th:inline="text">
-                        <i class="fas fa-arrow-left"></i> [[#{reservas.volveratalleres}]]
-                    </div>
-                </a>
-                 </div>
+                <div class="container mt-5" th:inline="text">
+                    <h2 class="mb-0">[[#{reservas.titulo}]]</h2>
+                    <a href="/taller/listado" class="btn btn-outline-secondary">
+                        <div class="container mt-5" th:inline="text">
+                            <i class="fas fa-arrow-left"></i> [[#{reservas.volveratalleres}]]
+                        </div>
+                    </a>
+                </div>
             </div>
 
             <table class="table table-bordered">
@@ -38,12 +37,15 @@
                             ₡ <span th:text="${#numbers.formatDecimal(r.precio, 0, 'COMMA', 2, 'POINT')}">0.00</span>
                         </td>
                         <td class="text-center" style="text-align: center;" th:text="${r.codigoParticipacion}"></td>
+
+                        <!-- Mostramos el "día" tal como viene en r.horario (sin depender de JS) -->
                         <td class="text-center" style="text-align: center;"
-                            th:attr="data-dia=${#strings.substring(r.horario, 0, #strings.indexOf(r.horario, ','))}"
-                            th:text="${#strings.substring(r.horario, 0, #strings.indexOf(r.horario, ','))}">
+                            th:text="${r.horario != null ? (r.horario.contains(',') ? #strings.trim(#strings.substring(r.horario,0,#strings.indexOf(r.horario,','))) : #strings.trim(r.horario)) : ''}">
                         </td>
+
+                        <!-- Mostramos la parte de hora / detalle después de la coma (si existe) -->
                         <td class="text-center text-nowrap" style="text-align: center;"
-                            th:text="${#strings.trim(#strings.substring(r.horario, #strings.indexOf(r.horario, ',') + 1))}">
+                            th:text="${r.horario != null && r.horario.contains(',') ? #strings.trim(#strings.substring(r.horario, #strings.indexOf(r.horario, ',') + 1)) : ''}">
                         </td>
                     </tr>
                 </tbody>
