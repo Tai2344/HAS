@@ -135,7 +135,7 @@ INSERT INTO taller_es (codigo, nombre, descripcion, horario, precio, activo) VAL
 ('003', 'Taller de música', 'Sesiones grupales con instrumentos, canto y bailes.', 'Miércoles, 3:00 pm – 4:30 pm', 15000.00, TRUE),
 ('004', 'Taller de memoria', 'Ejercita tu mente con juegos y actividades cognitivas.', 'Jueves, 10:00 am – 11:30 am',  15000.00, TRUE),
 ('005', 'Ejercicio', 'Mantente activo con ejercicios de bajo impacto en personas mayores.', 'Viernes, 8:30 am – 11:00 am',  10000.00, TRUE),
-('006', 'Taller de lectura', 'Comparte historias y participa en discusiones.', 'Sábado, 1:00 pm – 3:00 pm',  15000.00, TRUE);
+('006', 'Taller de lectura', 'Comparte historias y participa en discusiones.', 'Sábado, 1:00 pm – 3:00 pm',  15000.00, TRUE),
 ('007', 'Taller de Ajedrez', 'Un taller desarrollado para tardes libres', 'Miércoles, 3:00 pm – 6:00 pm',1500.00, FALSE),
 ('008', 'Taller de Tejer', 'Aprende o mejora tus habilidades para tejer', 'Domingo, 4:00 pm – 7:00 pm',  1500.00, FALSE),
 ('009', 'Taller de Fotografía', 'Comparte fotografías y hermosos recuerdos de forma grupal', 'Martes, 11:00 am – 2:00 pm', 0.00, FALSE);
