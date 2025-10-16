@@ -16,8 +16,8 @@
     <name>Proyecto</name>
     <description>Proyecto_Hogar_Arbol_Sabiduría </description>
     <properties>
-        <java.version>23</java.version>
-        <maven.compiler.release>24</maven.compiler.release>
+        <java.version>17</java.version>
+        <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
